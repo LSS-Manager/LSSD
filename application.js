@@ -499,7 +499,10 @@ function markerIsVisibleOnMap(e, t) {
     return e.getBounds().pad(0.5).contains(t);
 }
 function map_moved() {
-    building_load_alliance_debounce();
+    (building_load_alliance_debounce(),
+        betaOptions.missions_vl &&
+            mapViewportFilter &&
+            refreshMissionsVirtualList(!0));
 }
 function mapExpand(e) {
     ((mapViewExpandedWindow = window.open(
@@ -518,6 +521,16 @@ function mapExpand(e) {
 }
 function toggleViewportFilter() {
     mapViewportFilter = !mapViewportFilter;
+}
+function toggleViewportFilter_MapKit() {
+    (toggleViewportFilter(),
+        xy_map.mapProvider === MapProviders.MAP_KIT &&
+            (mapViewportFilter ?
+                ($('#img_t_filters_inactive').hide(),
+                $('#img_t_filters_active').show())
+            :   ($('#img_t_filters_inactive').show(),
+                $('#img_t_filters_active').hide())),
+        refreshMissionsVirtualList(!0));
 }
 function massMissionMarkerAdd(e) {
     let t = new Map();
@@ -2609,25 +2622,30 @@ function searchMission() {
 function mission_overview_timer_call() {
     var e = 0,
         t = new Date().getTime();
-    (void 0 !== mission_overview_last_count &&
-        (e = t - mission_overview_last_count),
+    if (
+        (void 0 !== mission_overview_last_count &&
+            (e = t - mission_overview_last_count),
         (mission_overview_last_count = t),
-        betaOptions.missions_vl && updateMissionsCountdown(e));
-    const i = $('.mission_overview_countdown[timeleft!=0]');
-    i.length > 0 ?
-        i.each(function () {
-            var t = $(this).attr('timeleft');
-            t > 0 &&
-                ((t -= e) <= 0 ?
-                    ((t = 0), $(this).html(''))
-                :   $(this).html(
-                        I18n.t('javascript.mission_start_in') +
-                            ' ' +
-                            formatTime(Math.round(t / 1e3), !1)
-                    ),
-                $(this).attr('timeleft', t));
-        })
-    :   clearInterval(mission_overview_timer);
+        betaOptions.missions_vl)
+    )
+        updateMissionsCountdown(e);
+    else {
+        const t = $('.mission_overview_countdown[timeleft!=0]');
+        t.length > 0 ?
+            t.each(function () {
+                var t = $(this).attr('timeleft');
+                t > 0 &&
+                    ((t -= e) <= 0 ?
+                        ((t = 0), $(this).html(''))
+                    :   $(this).html(
+                            I18n.t('javascript.mission_start_in') +
+                                ' ' +
+                                formatTime(Math.round(t / 1e3), !1)
+                        ),
+                    $(this).attr('timeleft', t));
+            })
+        :   clearInterval(mission_overview_timer);
+    }
 }
 function successfullMessage(e) {
     ($('#important_messages_success').html(e),
@@ -4077,9 +4095,7 @@ function bigMapWindowSizeChanged() {
         var e = parseInt($('#missions_outer').height());
         ((e = e - parseInt($('.missions-panel-head').height()) - 15),
             $('#missions-panel-body').css('height', e + 'px'),
-            betaOptions &&
-                betaOptions.missions_vl &&
-                refreshMissionsVLHeight(e),
+            betaOptions.missions_vl && refreshMissionsVLHeight(e),
             (e =
                 (e = parseInt($('#buildings_outer').height())) -
                 parseInt($('#building_panel_heading').height()) -
@@ -4699,7 +4715,7 @@ function isValidDate(e, t) {
 }
 function associate_mission_with_group() {}
 function getAllMissionIds() {
-    return betaOptions && betaOptions.missions_vl ?
+    return betaOptions.missions_vl ?
             missions_data.keys()
         :   mission_markers_per_id.keys();
 }
@@ -8251,7 +8267,10 @@ function processMissionFromPush(e) {
     } else xy_map.addMarkerToLayer(null, mission_markers_per_id.get(n.id));
     (refreshMissionsVirtualList(),
         setTimeout(() => {
-            missionVehiclesShowNotInvolved(i);
+            (missionVehiclesShowNotInvolved(i),
+                missionSelectionUpdateButtons(),
+                updateMissionStateButtons(),
+                updateNoMissionsMessages());
         }));
 }
 function updateMissionPatientsData(e) {
@@ -8401,18 +8420,15 @@ function openMissionDetails(e) {
     lightboxOpen(buildMissionHref(e));
 }
 function missionSelectionUpdateButtons() {
-    betaOptions && betaOptions.missions_vl ?
+    betaOptions.missions_vl ?
         missionSelectionUpdateButtonsNew()
     :   missionSelectionUpdateButtonsOld();
 }
 function updateMissionsCount(e, t = !1) {
-    (0 === e.vehicle_state &&
-        (t ?
-            (missionStateFilters.unattended.missionIds =
-                missionStateFilters.unattended.missionIds.filter(
-                    t => t !== e.id
-                ))
-        :   (missionStateFilters.unattended.missionIds.push(e.id),
+    t ?
+        removeFromAnyCount(e?.id)
+    :   (0 === e.vehicle_state &&
+            (missionStateFilters.unattended.missionIds.push(e.id),
             (missionStateFilters.attended.missionIds =
                 missionStateFilters.attended.missionIds.filter(
                     t => t !== e.id
@@ -8420,71 +8436,63 @@ function updateMissionsCount(e, t = !1) {
             (missionStateFilters.finishing.missionIds =
                 missionStateFilters.finishing.missionIds.filter(
                     t => t !== e.id
-                )))),
+                ))),
         1 === e.vehicle_state &&
-            (t ?
-                (missionStateFilters.attended.missionIds =
-                    missionStateFilters.attended.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   (missionStateFilters.attended.missionIds.push(e.id),
-                (missionStateFilters.unattended.missionIds =
-                    missionStateFilters.unattended.missionIds.filter(
-                        t => t !== e.id
-                    )),
-                (missionStateFilters.finishing.missionIds =
-                    missionStateFilters.finishing.missionIds.filter(
-                        t => t !== e.id
-                    )))),
+            (missionStateFilters.attended.missionIds.push(e.id),
+            (missionStateFilters.unattended.missionIds =
+                missionStateFilters.unattended.missionIds.filter(
+                    t => t !== e.id
+                )),
+            (missionStateFilters.finishing.missionIds =
+                missionStateFilters.finishing.missionIds.filter(
+                    t => t !== e.id
+                ))),
         2 === e.vehicle_state &&
-            (t ?
-                (missionStateFilters.finishing.missionIds =
-                    missionStateFilters.finishing.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   (missionStateFilters.finishing.missionIds.push(e.id),
-                (missionStateFilters.attended.missionIds =
-                    missionStateFilters.attended.missionIds.filter(
-                        t => t !== e.id
-                    )),
-                (missionStateFilters.unattended.missionIds =
-                    missionStateFilters.unattended.missionIds.filter(
-                        t => t !== e.id
-                    )))),
-        e.krankentransport ?
-            t ?
-                (missionTypeFilters.krankentransporte.missionIds =
-                    missionTypeFilters.krankentransporte.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   missionTypeFilters.krankentransporte.missionIds.push(e.id)
-        : e.sicherheitswache ?
-            t ?
-                (missionTypeFilters.sicherheitswache.missionIds =
-                    missionTypeFilters.sicherheitswache.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   missionTypeFilters.sicherheitswache.missionIds.push(e.id)
+            (missionStateFilters.finishing.missionIds.push(e.id),
+            (missionStateFilters.attended.missionIds =
+                missionStateFilters.attended.missionIds.filter(
+                    t => t !== e.id
+                )),
+            (missionStateFilters.unattended.missionIds =
+                missionStateFilters.unattended.missionIds.filter(
+                    t => t !== e.id
+                ))),
+        e.krankentransport || e.kt ?
+            missionTypeFilters.krankentransporte.missionIds.push(e.id)
+        : e.sicherheitswache || e.sw ?
+            missionTypeFilters.sicherheitswache.missionIds.push(e.id)
         : e.user_id !== user_id && null != e.user_id ?
-            t ?
-                (missionTypeFilters.alliance.missionIds =
-                    missionTypeFilters.alliance.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   missionTypeFilters.alliance.missionIds.push(e.id)
+            missionTypeFilters.alliance.missionIds.push(e.id)
         : e.user_id !== user_id && null == e.user_id ?
-            t ?
-                (missionTypeFilters.alliance_event.missionIds =
-                    missionTypeFilters.alliance_event.missionIds.filter(
-                        t => t !== e.id
-                    ))
-            :   missionTypeFilters.alliance_event.missionIds.push(e.id)
-        : t ?
-            (missionTypeFilters.emergency.missionIds =
-                missionTypeFilters.emergency.missionIds.filter(t => t !== e.id))
+            missionTypeFilters.alliance_event.missionIds.push(e.id)
         :   missionTypeFilters.emergency.missionIds.push(e.id),
         e.ct && (criticalTransportMissionsPresent = !0),
         e.pt && (patientTransportMissionsPresent = !0));
+}
+function removeFromAnyCount(e) {
+    e &&
+        (missionParticipationFilters.new.missionIds.delete(e),
+        missionParticipationFilters.started.missionIds.delete(e),
+        (missionStateFilters.unattended.missionIds =
+            missionStateFilters.unattended.missionIds.filter(t => t !== e)),
+        (missionStateFilters.attended.missionIds =
+            missionStateFilters.attended.missionIds.filter(t => t !== e)),
+        (missionStateFilters.finishing.missionIds =
+            missionStateFilters.finishing.missionIds.filter(t => t !== e)),
+        (missionTypeFilters.krankentransporte.missionIds =
+            missionTypeFilters.krankentransporte.missionIds.filter(
+                t => t !== e
+            )),
+        (missionTypeFilters.sicherheitswache.missionIds =
+            missionTypeFilters.sicherheitswache.missionIds.filter(
+                t => t !== e
+            )),
+        (missionTypeFilters.alliance.missionIds =
+            missionTypeFilters.alliance.missionIds.filter(t => t !== e)),
+        (missionTypeFilters.alliance_event.missionIds =
+            missionTypeFilters.alliance_event.missionIds.filter(t => t !== e)),
+        (missionTypeFilters.emergency.missionIds =
+            missionTypeFilters.emergency.missionIds.filter(t => t !== e)));
 }
 function missionSelectionUpdateButtonsNew() {
     for (let e in missionTypeFilters) {
@@ -8503,7 +8511,7 @@ function missionSelectionUpdateButtonsNew() {
             n = missionTypeFilters[e].missionIds.filter(e =>
                 missionStateFilters.unattended.missionIds.includes(e)
             ).length;
-        $(document.getElementById('mission_select_' + e)).html(
+        $(document.getElementById(`mission_select_${e}`)).html(
             `${t} ${n}/${i}`
         );
     }
@@ -8661,7 +8669,7 @@ function missionSelectionOnly(e) {
         updateMissionFilterQueryParams());
 }
 function updateMissionStateButtons() {
-    betaOptions && betaOptions.missions_vl ?
+    betaOptions.missions_vl ?
         updateMissionStateButtonsNew()
     :   updateMissionStateButtonsOld();
 }
@@ -8811,7 +8819,7 @@ function addMissionParticipationsFromWorker(e) {
     (updateMissionParticipationButtons(), refreshMissionsFilter());
 }
 function refreshMissionsFilter() {
-    betaOptions && betaOptions.missions_vl ?
+    betaOptions.missions_vl ?
         refreshMissionsFilterNew()
     :   refreshMissionsFilterOld();
 }
@@ -9207,9 +9215,8 @@ function missionDelete(e) {
     (1 == mobile_bridge_use &&
         4 == mobile_version &&
         mobileBridgeAdd('mission_delete', { id: e }),
-        betaOptions.missions_vl ?
-            (missions_data.delete(e), refreshMissionsVirtualList())
-        :   $('#mission_' + e).addClass('mission_deleted'),
+        betaOptions.missions_vl ||
+            $('#mission_' + e).addClass('mission_deleted'),
         missionTimerDelete(e));
     var t = mission_markers_per_id.get(parseInt(e));
     t && (mission_markers_per_id.delete(t.mission_id), xy_map.removeMarker(t));
@@ -9220,15 +9227,20 @@ function missionDelete(e) {
         (mission_markers = i),
         missionParticipationFilters.new.missionIds.delete(e),
         missionParticipationFilters.started.missionIds.delete(e),
-        missionSelectionUpdateButtons(),
         updateMissionInChat(e),
-        betaOptions.missions_vl && refreshMissionsVirtualList());
+        betaOptions.missions_vl &&
+            (missions_data.delete(e),
+            refreshMissionsVirtualList(),
+            removeFromAnyCount(e)),
+        missionSelectionUpdateButtons(),
+        updateMissionStateButtons(),
+        updateNoMissionsMessages());
 }
 function missionsDelete(e) {
     if (e && 0 !== e.length) {
         (e.forEach(e => {
             (betaOptions.missions_vl ?
-                missions_data.delete(e)
+                (missions_data.delete(e), removeFromAnyCount(e))
             :   $('#mission_' + e).addClass('mission_deleted'),
                 1 == mobile_bridge_use &&
                     4 == mobile_version &&
@@ -9248,8 +9260,10 @@ function missionsDelete(e) {
             !1 === e.includes(n.mission_id) && t.push(n);
         }),
             (mission_markers = t),
+            betaOptions.missions_vl && refreshMissionsVirtualList(),
             missionSelectionUpdateButtons(),
-            betaOptions.missions_vl && refreshMissionsVirtualList());
+            updateMissionStateButtons(),
+            updateNoMissionsMessages());
     }
 }
 function buildMissionHref(e) {
@@ -9403,7 +9417,7 @@ function prepareMissionDomElementStrInWorker(
     f
 ) {
     const g = !0 === identifyParticipation(s);
-    return `<div search_attribute='${e}'\n                 data-mission-type-filter='${t}'\n                 data-mission-state-filter='${i}'\n                 data-mission-participation-filter='${g ? 'started' : 'new'}'\n                 data-sortable-by='${JSON.stringify(n)}'\n                 id='mission_${s.id}'\n                 mission_id='${s.id}'\n                 mission_type_id='${s.mtid}'\n                 class='virtual-item-indicator mission_visibility missionSideBarEntry missionSideBarEntrySearchable ${a} ${f}'\n                 latitude='${s.latitude}'\n                 longitude='${s.longitude}'\n                 target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                 target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                 data-overlay-index='${s.overlay_index}'\n                 data-additive-overlays='${s.additive_overlays || ''}'>\n              <div id='mission_panel_${s.id}'\n                   class='panel panel-default ${o} mission_panel_${r}'>\n                <div id='mission_panel_heading_${s.id}' class='panel-heading'>\n                  <a href='/missions/${s.id}?${readContextParam('missionFilterQueryParams')}'\n                     class='btn btn-default btn-xs lightbox-open mission-alarm-button'\n                     id='alarm_button_${s.id}' m_id='${s.id}'> ${I18n.t('javascript.alarm')}</a>\n                  <span id='mission_participant_${s.id}'\n                        class='glyphicon glyphicon-user ${g ? '' : 'hidden'}'></span>\n                  <span id='mission_participant_new_${s.id}'\n                        class='glyphicon glyphicon-asterisk ${g ? 'hidden' : ''}'></span>\n                  <a href=''\n                     id='mission_caption_${s.id}'\n                     class='map_position_mover'\n                     target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                     target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                     data-latitude='${s.latitude}'\n                     data-longitude='${s.longitude}'>${l}</a>\n                </div>\n                <div class='panel-body'>\n                  <div class='row'>\n                    <div class='col-xs-1'>\n                      <img src='${c}'\n                           id='mission_vehicle_state_${s.id}'\n                           class='mission_vehicle_state'>\n                    </div>\n                    <div class='col-xs-11'>\n                      <div class='mission_overview_countdown'\n                           id='mission_overview_countdown_${s.id}'\n                           timeleft='${d}'></div>\n                      <div id='mission_bar_outer_${s.id}'\n                           class='progress mission_progress'>\n                        <div id='mission_bar_${s.id}'\n                             class='progress-bar progress-bar-danger'\n                             role='progressbar' aria-valuemin='0' aria-valuemax='100'\n                             style='width: ${readLiveCurrentValue(s)}%;'>\n                          <div class='${u}'\n                               id='mission_bar_striper_${s.id}'></div>\n                        </div>\n                      </div>\n                      <div id='mission_missing_${s.id}'class='${h}'>${p}</div>\n                      <div id='mission_missing_short_${s.id}'class='${m}'>${_}</div>\n                      <div id='mission_pump_progress_${s.id}'>${prepPumpProgress(s, u)}</div>\n                      <div id='patients_missing_${s.id}'></div>\n                      <div id='mission_patients_${s.id}' class='row'>${patientDataElement(s)}</div>\n                      <div id='mission_prisoners_${s.id}' class='mission_prisoners'>${prisonerElement(s)}</div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>`;
+    return `<div search_attribute='${e}'\n                 data-mission-type-filter='${t}'\n                 data-mission-state-filter='${i}'\n                 data-mission-participation-filter='${g ? 'started' : 'new'}'\n                 data-sortable-by='${JSON.stringify(n)}'\n                 id='mission_${s.id}'\n                 mission_id='${s.id}'\n                 mission_type_id='${s.mtid}'\n                 class='virtual-item-indicator mission_visibility missionSideBarEntry missionSideBarEntrySearchable ${a} ${f}'\n                 latitude='${s.latitude}'\n                 longitude='${s.longitude}'\n                 target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                 target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                 data-overlay-index='${s.overlay_index}'\n                 data-additive-overlays='${s.additive_overlays || ''}'>\n              <div id='mission_panel_${s.id}'\n                   class='panel panel-default ${o} mission_panel_${r}'>\n                <div id='mission_panel_heading_${s.id}' class='panel-heading'>\n                  <a href='/missions/${s.id}?${readContextParam('missionFilterQueryParams')}'\n                     class='btn btn-default btn-xs lightbox-open mission-alarm-button'\n                     id='alarm_button_${s.id}' m_id='${s.id}'> ${I18n.t('javascript.alarm')}</a>\n                  <span id='mission_participant_${s.id}'\n                        class='glyphicon glyphicon-user ${g ? '' : 'hidden'}'></span>\n                  <span id='mission_participant_new_${s.id}'\n                        class='glyphicon glyphicon-asterisk ${g ? 'hidden' : ''}'></span>\n                  <a href=''\n                     id='mission_caption_${s.id}'\n                     class='map_position_mover'\n                     target_latitude='${isParamPresent(s, 'tlat') ? s.tlat : 'null'}'\n                     target_longitude='${isParamPresent(s, 'tlng') ? s.tlng : 'null'}'\n                     data-latitude='${s.latitude}'\n                     data-longitude='${s.longitude}'>${l}</a>\n                </div>\n                <div class='panel-body'>\n                  <div class='row'>\n                    <div class='col-xs-1'>\n                      <img src='${c}'\n                           id='mission_vehicle_state_${s.id}'\n                           class='mission_vehicle_state'>\n                    </div>\n                    <div class='col-xs-11'>\n                      <div class='mission_overview_countdown'\n                           id='mission_overview_countdown_${s.id}'\n                           timeleft='${d}'>${prepCountDownTime(s)}</div>\n                      <div id='mission_bar_outer_${s.id}'\n                           class='progress mission_progress'>\n                        <div id='mission_bar_${s.id}'\n                             class='progress-bar progress-bar-danger'\n                             role='progressbar' aria-valuemin='0' aria-valuemax='100'\n                             style='width: ${readLiveCurrentValue(s)}%;'>\n                          <div class='${u}'\n                               id='mission_bar_striper_${s.id}'></div>\n                        </div>\n                      </div>\n                      <div id='mission_missing_${s.id}'class='${h}'>${p}</div>\n                      <div id='mission_missing_short_${s.id}'class='${m}'>${_}</div>\n                      <div id='mission_pump_progress_${s.id}'>${prepPumpProgress(s, u)}</div>\n                      <div id='patients_missing_${s.id}'></div>\n                      <div id='mission_patients_${s.id}' class='row'>${patientDataElement(s)}</div>\n                      <div id='mission_prisoners_${s.id}' class='mission_prisoners'>${prisonerElement(s)}</div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>`;
 }
 function identifyParticipation(e) {
     if (readContextParam('missionParticipationFilters')) {
@@ -9463,6 +9477,59 @@ function prisonerElement(e) {
         for (const e of i)
             t += `<div style='max-width:250px' class='col-md-6 small' id='prisoner_${e.id}'>${e.name} </div>`;
     return t;
+}
+function prepCountDownTime(e) {
+    if (!e.sw_start_date) return '';
+    try {
+        let t = new Date(parseInt(e.sw_start_date)) - Date.now();
+        return `${I18n.t('javascript.mission_start_in')} ${formatTime(Math.round(t / 1e3), !1)}`;
+    } catch (e) {
+        console.warn(e);
+    }
+    return '';
+}
+function formatTime(e, t) {
+    if (((total_rest = e), e > 0)) {
+        if (((countdown_message = ''), e >= 86400)) {
+            var i = Math.floor(e / 86400);
+            if (
+                ((e -= 86400 * i),
+                (countdown_message +=
+                    i +
+                    ' ' +
+                    (1 === i ?
+                        I18n.t('javascript.day')
+                    :   I18n.t('javascript.days')) +
+                    ' - '),
+                void 0 !== t && 1 == t)
+            )
+                return countdown_message;
+        }
+        if (e >= 3600) {
+            var n = Math.floor(e / 3600);
+            if (
+                ((e -= 3600 * n),
+                n < 10 && (n = '0' + n),
+                (countdown_message += n + ':'),
+                void 0 !== t && 1 == t)
+            )
+                return countdown_message;
+        }
+        var s = Math.floor(e / 60);
+        if (
+            ((e -= 60 * s),
+            s < 10 && (s = '0' + s),
+            (countdown_message += s + ':'),
+            void 0 !== t && 1 == t)
+        )
+            return countdown_message;
+        if (
+            ((countdown_message += e < 10 ? '0' + e : e),
+            void 0 !== t && 1 == t)
+        )
+            return countdown_message;
+    } else countdown_message = '00';
+    return countdown_message;
 }
 function prepPumpProgress(e, t) {
     if (e.water_damage_pump_value) {
@@ -36346,7 +36413,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         }
         function d() {
             try {
-                return K.activeElement;
+                return Y.activeElement;
             } catch (e) {}
         }
         function u(e, t) {
@@ -36555,7 +36622,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             return s + S(e, t, i || (o ? 'border' : 'content'), n, a) + 'px';
         }
         function z(e) {
-            var t = K,
+            var t = Y,
                 i = bt[e];
             return (
                 i ||
@@ -36731,9 +36798,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
         function O() {
             return (
                 setTimeout(function () {
-                    Kt = t;
+                    Yt = t;
                 }),
-                (Kt = de.now())
+                (Yt = de.now())
             );
         }
         function F(e, t, i) {
@@ -36755,7 +36822,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 l = function () {
                     if (s) return !1;
                     for (
-                        var t = Kt || O(),
+                        var t = Yt || O(),
                             i = Math.max(0, c.startTime + c.duration - t),
                             n = 1 - (i / c.duration || 0),
                             a = 0,
@@ -36775,7 +36842,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     opts: de.extend(!0, { specialEasing: {} }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Kt || O(),
+                    startTime: Yt || O(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -36929,9 +36996,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
         var U,
             G,
             Z = typeof t,
-            Y = e.location,
-            K = e.document,
-            J = K.documentElement,
+            K = e.location,
+            Y = e.document,
+            J = Y.documentElement,
             Q = e.jQuery,
             X = e.$,
             ee = {},
@@ -36963,16 +37030,16 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 return t.toUpperCase();
             },
             xe = function (e) {
-                (K.addEventListener ||
+                (Y.addEventListener ||
                     'load' === e.type ||
-                    'complete' === K.readyState) &&
+                    'complete' === Y.readyState) &&
                     (Te(), de.ready());
             },
             Te = function () {
-                K.addEventListener ?
-                    (K.removeEventListener('DOMContentLoaded', xe, !1),
+                Y.addEventListener ?
+                    (Y.removeEventListener('DOMContentLoaded', xe, !1),
                     e.removeEventListener('load', xe, !1))
-                :   (K.detachEvent('onreadystatechange', xe),
+                :   (Y.detachEvent('onreadystatechange', xe),
                     e.detachEvent('onload', xe));
             };
         ((de.fn = de.prototype =
@@ -37006,7 +37073,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         s[1],
                                         i && i.nodeType ?
                                             i.ownerDocument || i
-                                        :   K,
+                                        :   Y,
                                         !0
                                     )
                                 ),
@@ -37018,11 +37085,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     :   this.attr(s, i[s]);
                             return this;
                         }
-                        if ((a = K.getElementById(s[2])) && a.parentNode) {
+                        if ((a = Y.getElementById(s[2])) && a.parentNode) {
                             if (a.id !== s[2]) return n.find(e);
                             ((this.length = 1), (this[0] = a));
                         }
-                        return ((this.context = K), (this.selector = e), this);
+                        return ((this.context = Y), (this.selector = e), this);
                     }
                     return (
                         e.nodeType ?
@@ -37153,12 +37220,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 },
                 ready: function (e) {
                     if (!(!0 === e ? --de.readyWait : de.isReady)) {
-                        if (!K.body) return setTimeout(de.ready);
+                        if (!Y.body) return setTimeout(de.ready);
                         ((de.isReady = !0),
                             (!0 !== e && --de.readyWait > 0) ||
-                                (U.resolveWith(K, [de]),
+                                (U.resolveWith(Y, [de]),
                                 de.fn.trigger &&
-                                    de(K).trigger('ready').off('ready')));
+                                    de(Y).trigger('ready').off('ready')));
                     }
                 },
                 isFunction: function (e) {
@@ -37217,7 +37284,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 parseHTML: function (e, t, i) {
                     if (!e || 'string' != typeof e) return null;
                     ('boolean' == typeof t && ((i = t), (t = !1)),
-                        (t = t || K));
+                        (t = t || Y));
                     var n = _e.exec(e),
                         s = !i && [];
                     return n ?
@@ -37424,17 +37491,17 @@ function identifyDefaultOrderBasedOnTarge(e) {
             }),
             (de.ready.promise = function (t) {
                 if (!U)
-                    if (((U = de.Deferred()), 'complete' === K.readyState))
+                    if (((U = de.Deferred()), 'complete' === Y.readyState))
                         setTimeout(de.ready);
-                    else if (K.addEventListener)
-                        (K.addEventListener('DOMContentLoaded', xe, !1),
+                    else if (Y.addEventListener)
+                        (Y.addEventListener('DOMContentLoaded', xe, !1),
                             e.addEventListener('load', xe, !1));
                     else {
-                        (K.attachEvent('onreadystatechange', xe),
+                        (Y.attachEvent('onreadystatechange', xe),
                             e.attachEvent('onload', xe));
                         var i = !1;
                         try {
-                            i = null == e.frameElement && K.documentElement;
+                            i = null == e.frameElement && Y.documentElement;
                         } catch (e) {}
                         i &&
                             i.doScroll &&
@@ -37459,7 +37526,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     ee['[object ' + t + ']'] = t.toLowerCase();
                 }
             ),
-            (G = de(K)),
+            (G = de(Y)),
             /*!
              * Sizzle CSS Selector Engine v1.9.4-pre
              * http://sizzlejs.com/
@@ -37989,8 +38056,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     U = 0,
                     G = s(),
                     Z = s(),
-                    Y = s(),
-                    K = !1,
+                    K = s(),
+                    Y = !1,
                     J = function () {
                         return 0;
                     },
@@ -38339,7 +38406,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 (J =
                                     R.compareDocumentPosition ?
                                         function (e, i) {
-                                            if (e === i) return ((K = !0), 0);
+                                            if (e === i) return ((Y = !0), 0);
                                             var n =
                                                 i.compareDocumentPosition &&
                                                 e.compareDocumentPosition &&
@@ -38372,7 +38439,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 o = i.parentNode,
                                                 r = [e],
                                                 l = [i];
-                                            if (e === i) return ((K = !0), 0);
+                                            if (e === i) return ((Y = !0), 0);
                                             if (!a || !o)
                                                 return (
                                                     e === t ? -1
@@ -38453,10 +38520,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         n = 0,
                         s = 0;
                     if (
-                        ((K = !A.detectDuplicates),
+                        ((Y = !A.detectDuplicates),
                         (j = !A.sortStable && e.slice(0)),
                         e.sort(J),
-                        K)
+                        Y)
                     ) {
                         for (; (t = e[s++]);) t === e[s] && (n = i.push(s));
                         for (; n--;) e.splice(i[n], 1);
@@ -38929,11 +38996,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         var i,
                             n = [],
                             s = [],
-                            a = Y[e + ' '];
+                            a = K[e + ' '];
                         if (!a) {
                             for (t || (t = _(e)), i = t.length; i--;)
                                 (a = w(t[i]))[$] ? n.push(a) : s.push(a);
-                            a = Y(e, k(s, n));
+                            a = K(e, k(s, n));
                         }
                         return a;
                     }),
@@ -38943,7 +39010,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     (A.sortStable = $.split('').sort(J).join('') === $),
                     B(),
                     [0, 0].sort(J),
-                    (A.detectDuplicates = K),
+                    (A.detectDuplicates = Y),
                     (de.find = i),
                     (de.expr = i.selectors),
                     (de.expr[':'] = de.expr.pseudos),
@@ -39187,7 +39254,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     l,
                     c,
                     d,
-                    u = K.createElement('div');
+                    u = Y.createElement('div');
                 if (
                     (u.setAttribute('className', 't'),
                     (u.innerHTML =
@@ -39198,8 +39265,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         !i.length)
                 )
                     return t;
-                ((r = (a = K.createElement('select')).appendChild(
-                    K.createElement('option')
+                ((r = (a = Y.createElement('select')).appendChild(
+                    Y.createElement('option')
                 )),
                     (s = u.getElementsByTagName('input')[0]),
                     (n.style.cssText = 'top:1px;float:left;opacity:.5'),
@@ -39213,10 +39280,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     (t.cssFloat = !!n.style.cssFloat),
                     (t.checkOn = !!s.value),
                     (t.optSelected = r.selected),
-                    (t.enctype = !!K.createElement('form').enctype),
+                    (t.enctype = !!Y.createElement('form').enctype),
                     (t.html5Clone =
                         '<:nav></:nav>' !==
-                        K.createElement('nav').cloneNode(!0).outerHTML),
+                        Y.createElement('nav').cloneNode(!0).outerHTML),
                     (t.inlineBlockNeedsLayout = !1),
                     (t.shrinkWrapBlocks = !1),
                     (t.pixelPosition = !1),
@@ -39233,7 +39300,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 } catch (e) {
                     t.deleteExpando = !1;
                 }
-                for (d in ((s = K.createElement('input')).setAttribute(
+                for (d in ((s = Y.createElement('input')).setAttribute(
                     'value',
                     ''
                 ),
@@ -39243,7 +39310,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (t.radioValue = 't' === s.value),
                 s.setAttribute('checked', 't'),
                 s.setAttribute('name', 't'),
-                (o = K.createDocumentFragment()).appendChild(s),
+                (o = Y.createDocumentFragment()).appendChild(s),
                 (t.appendChecked = s.checked),
                 (t.checkClone = o
                     .cloneNode(!0)
@@ -39270,9 +39337,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             s,
                             a =
                                 'padding:0;margin:0;border:0;display:block;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;',
-                            o = K.getElementsByTagName('body')[0];
+                            o = Y.getElementsByTagName('body')[0];
                         o &&
-                            (((i = K.createElement('div')).style.cssText =
+                            (((i = Y.createElement('div')).style.cssText =
                                 'border:0;width:0;height:0;position:absolute;top:0;left:-9999px;margin-top:1px'),
                             o.appendChild(i).appendChild(u),
                             (u.innerHTML =
@@ -39307,7 +39374,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         }
                                     ).width),
                                 ((n = u.appendChild(
-                                    K.createElement('div')
+                                    Y.createElement('div')
                                 )).style.cssText = u.style.cssText =
                                     a),
                                 (n.style.marginRight = n.style.width = '0'),
@@ -40155,11 +40222,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     d,
                     u,
                     h,
-                    p = [s || K],
+                    p = [s || Y],
                     m = le.call(i, 'type') ? i.type : i,
                     _ = le.call(i, 'namespace') ? i.namespace.split('.') : [];
                 if (
-                    ((l = u = s = s || K),
+                    ((l = u = s = s || Y),
                     3 !== s.nodeType &&
                         8 !== s.nodeType &&
                         !Ne.test(m + de.event.triggered) &&
@@ -40196,7 +40263,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             l = l.parentNode
                         )
                             (p.push(l), (u = l));
-                        u === (s.ownerDocument || K) &&
+                        u === (s.ownerDocument || Y) &&
                             p.push(u.defaultView || u.parentWindow || e);
                     }
                     for (h = 0; (l = p[h++]) && !i.isPropagationStopped();)
@@ -40320,7 +40387,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 )
                     e[(i = n[t])] = a[i];
                 return (
-                    e.target || (e.target = a.srcElement || K),
+                    e.target || (e.target = a.srcElement || Y),
                     3 === e.target.nodeType && (e.target = e.target.parentNode),
                     (e.metaKey = !!e.metaKey),
                     o.filter ? o.filter(e, a) : e
@@ -40354,7 +40421,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return (
                         null == e.pageX &&
                             null != i.clientX &&
-                            ((a = (s = e.target.ownerDocument || K)
+                            ((a = (s = e.target.ownerDocument || Y)
                                 .documentElement),
                             (n = s.body),
                             (e.pageX =
@@ -40438,7 +40505,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             },
         }),
             (de.removeEvent =
-                K.removeEventListener ?
+                Y.removeEventListener ?
                     function (e, t, i) {
                         e.removeEventListener &&
                             e.removeEventListener(t, i, !1);
@@ -40650,10 +40717,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             };
                         de.event.special[t] = {
                             setup: function () {
-                                0 == i++ && K.addEventListener(e, n, !0);
+                                0 == i++ && Y.addEventListener(e, n, !0);
                             },
                             teardown: function () {
-                                0 == --i && K.removeEventListener(e, n, !0);
+                                0 == --i && Y.removeEventListener(e, n, !0);
                             },
                         };
                     }
@@ -40921,8 +40988,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 'abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video',
             Ge = / jQuery\d+="(?:null|\d+)"/g,
             Ze = new RegExp('<(?:' + Ue + ')[\\s/>]', 'i'),
-            Ye = /^\s+/,
-            Ke =
+            Ke = /^\s+/,
+            Ye =
                 /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
             Je = /<([\w:]+)/,
             Qe = /<tbody/i,
@@ -40951,7 +41018,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         [0, '', '']
                     :   [1, 'X<div>', '</div>'],
             },
-            rt = p(K).appendChild(K.createElement('div'));
+            rt = p(Y).appendChild(Y.createElement('div'));
         ((ot.optgroup = ot.option),
             (ot.tbody = ot.tfoot = ot.colgroup = ot.caption = ot.thead),
             (ot.th = ot.td),
@@ -40966,7 +41033,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         (
                                             (this[0] &&
                                                 this[0].ownerDocument) ||
-                                            K
+                                            Y
                                         ).createTextNode(e)
                                     );
                         },
@@ -41058,10 +41125,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 'string' == typeof e &&
                                 !et.test(e) &&
                                 (de.support.htmlSerialize || !Ze.test(e)) &&
-                                (de.support.leadingWhitespace || !Ye.test(e)) &&
+                                (de.support.leadingWhitespace || !Ke.test(e)) &&
                                 !ot[(Je.exec(e) || ['', ''])[1].toLowerCase()]
                             ) {
-                                e = e.replace(Ke, '<$1></$2>');
+                                e = e.replace(Ye, '<$1></$2>');
                                 try {
                                     for (; n < s; n++)
                                         1 === (i = this[n] || {}).nodeType &&
@@ -41274,7 +41341,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         d = ot[l] || ot._default,
                                         r.innerHTML =
                                             d[1] +
-                                            a.replace(Ke, '<$1></$2>') +
+                                            a.replace(Ye, '<$1></$2>') +
                                             d[2],
                                         s = d[0];
                                     s--;
@@ -41282,8 +41349,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     r = r.lastChild;
                                 if (
                                     (!de.support.leadingWhitespace &&
-                                        Ye.test(a) &&
-                                        m.push(t.createTextNode(Ye.exec(a)[0])),
+                                        Ke.test(a) &&
+                                        m.push(t.createTextNode(Ke.exec(a)[0])),
                                     !de.support.tbody)
                                 )
                                     for (
@@ -41598,7 +41665,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         l
                     );
                 }))
-            :   K.documentElement.currentStyle &&
+            :   Y.documentElement.currentStyle &&
                 ((ct = function (e) {
                     return e.currentStyle;
                 }),
@@ -41869,9 +41936,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
             qt = {},
             $t = '*/'.concat('*');
         try {
-            Mt = Y.href;
+            Mt = K.href;
         } catch (e) {
-            (((Mt = K.createElement('a')).href = ''), (Mt = Mt.href));
+            (((Mt = Y.createElement('a')).href = ''), (Mt = Mt.href));
         }
         ((Et = Ft.exec(Mt.toLowerCase()) || []),
             (de.fn.load = function (e, i, n) {
@@ -42214,10 +42281,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
             de.ajaxTransport('script', function (e) {
                 if (e.crossDomain) {
                     var i,
-                        n = K.head || de('head')[0] || K.documentElement;
+                        n = Y.head || de('head')[0] || Y.documentElement;
                     return {
                         send: function (t, s) {
-                            (((i = K.createElement('script')).async = !0),
+                            (((i = Y.createElement('script')).async = !0),
                                 e.scriptCharset &&
                                     (i.charset = e.scriptCharset),
                                 (i.src = e.url),
@@ -42303,7 +42370,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         var Ut,
             Gt,
             Zt = 0,
-            Yt =
+            Kt =
                 e.ActiveXObject &&
                 function () {
                     var e;
@@ -42360,7 +42427,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                     o &&
                                                         ((l.onreadystatechange =
                                                             de.noop),
-                                                        Yt && delete Ut[o]),
+                                                        Kt && delete Ut[o]),
                                                     s)
                                                 )
                                                     4 !== l.readyState &&
@@ -42397,10 +42464,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         4 === l.readyState ?
                                             setTimeout(n)
                                         :   ((o = ++Zt),
-                                            Yt &&
+                                            Kt &&
                                                 (Ut ||
                                                     ((Ut = {}),
-                                                    de(e).unload(Yt)),
+                                                    de(e).unload(Kt)),
                                                 (Ut[o] = n)),
                                             (l.onreadystatechange = n))
                                     :   n());
@@ -42410,7 +42477,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             },
                         };
                 }));
-        var Kt,
+        var Yt,
             Jt,
             Qt = /^(?:toggle|show|hide)$/,
             Xt = new RegExp('^(?:([+-])=|)(' + ue + ')([a-z%]*)$', 'i'),
@@ -42680,9 +42747,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 var e,
                     i = de.timers,
                     n = 0;
-                for (Kt = de.now(); n < i.length; n++)
+                for (Yt = de.now(); n < i.length; n++)
                     (e = i[n])() || i[n] !== e || i.splice(n--, 1);
-                (i.length || de.fx.stop(), (Kt = t));
+                (i.length || de.fx.stop(), (Yt = t));
             }),
             (de.fx.timer = function (e) {
                 e() && de.timers.push(e) && de.fx.start();
@@ -51622,8 +51689,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         U = this._getNumberOfMonths(e),
                         G = this._get(e, 'showCurrentAtPos'),
                         Z = this._get(e, 'stepMonths'),
-                        Y = 1 !== U[0] || 1 !== U[1],
-                        K = this._daylightSavingAdjust(
+                        K = 1 !== U[0] || 1 !== U[1],
+                        Y = this._daylightSavingAdjust(
                             e.currentDay ?
                                 new Date(
                                     e.currentYear,
@@ -51711,7 +51778,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             o = this._get(e, 'currentText'),
                             r =
                                 this._get(e, 'gotoCurrent') && e.currentDay ?
-                                    K
+                                    Y
                                 :   H,
                             o =
                                 V ?
@@ -51762,7 +51829,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 )),
                                 (S = ' ui-corner-all'),
                                 (A = ''),
-                                Y)
+                                K)
                             ) {
                                 if (
                                     ((A += "<div class='ui-datepicker-group"),
@@ -51849,7 +51916,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         7,
                                     I = Math.ceil((P + M) / 7),
                                     D =
-                                        Y && this.maxRows > I ?
+                                        K && this.maxRows > I ?
                                             this.maxRows
                                         :   I,
                                     this.maxRows = D,
@@ -51912,7 +51979,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             (O && !g ? '' : (
                                                 ' ' +
                                                 R[1] +
-                                                (j.getTime() === K.getTime() ?
+                                                (j.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
                                                 (j.getTime() === H.getTime() ?
@@ -51942,7 +52009,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 (j.getTime() === H.getTime() ?
                                                     ' ui-state-highlight'
                                                 :   '') +
-                                                (j.getTime() === K.getTime() ?
+                                                (j.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
                                                 (O ?
@@ -51959,7 +52026,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             (++X > 11 && ((X = 0), ee++),
                                 (x += A +=
                                     '</tbody></table>' +
-                                    (Y ?
+                                    (K ?
                                         '</div>' +
                                         (U[0] > 0 && T === U[1] - 1 ?
                                             "<div class='ui-datepicker-row-break'></div>"
@@ -62191,7 +62258,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         }
         function s(e) {
             return (
-                '_leaflet_id' in e || (e._leaflet_id = ++Ye),
+                '_leaflet_id' in e || (e._leaflet_id = ++Ke),
                 e._leaflet_id
             );
         }
@@ -62247,7 +62314,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             return (t && -1 !== t.indexOf('?') ? '&' : '?') + s.join('&');
         }
         function p(e, t) {
-            return e.replace(Ke, function (e, i) {
+            return e.replace(Ye, function (e, i) {
                 if (void 0 === (i = t[i]))
                     throw new Error('No value provided for variable ' + e);
                 return 'function' == typeof i ? i(t) : i;
@@ -62359,8 +62426,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
             return (
                 'touchstart' !== t ||
                     ii ||
-                    (document.addEventListener(Yt, j, !0),
-                    document.addEventListener(Kt, B, !0),
+                    (document.addEventListener(Kt, j, !0),
+                    document.addEventListener(Yt, B, !0),
                     document.addEventListener(Jt, R, !0),
                     document.addEventListener(Qt, R, !0),
                     (ii = !0)),
@@ -62489,14 +62556,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
             if (void 0 !== e.classList)
                 for (var n = d(t), s = 0, a = n.length; s < a; s++)
                     e.classList.add(n[s]);
-            else G(e, t) || K(e, ((i = J(e)) ? i + ' ' : '') + t);
-        }
-        function Y(e, t) {
-            void 0 !== e.classList ?
-                e.classList.remove(t)
-            :   K(e, c((' ' + J(e) + ' ').replace(' ' + t + ' ', ' ')));
+            else G(e, t) || Y(e, ((i = J(e)) ? i + ' ' : '') + t);
         }
         function K(e, t) {
+            void 0 !== e.classList ?
+                e.classList.remove(t)
+            :   Y(e, c((' ' + J(e) + ' ').replace(' ' + t + ' ', ' ')));
+        }
+        function Y(e, t) {
             void 0 === e.className.baseVal ?
                 (e.className = t)
             :   (e.className.baseVal = t);
@@ -63054,8 +63121,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 function (e) {
                     return ((i.prototype = e), new i());
                 },
-            Ye = 0,
-            Ke = /\{ *([\w_ -]+) *\}/g,
+            Ke = 0,
+            Ye = /\{ *([\w_ -]+) *\}/g,
             Je =
                 Array.isArray ||
                 function (e) {
@@ -63080,7 +63147,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 create: Ze,
                 bind: n,
                 get lastId() {
-                    return Ye;
+                    return Ke;
                 },
                 stamp: s,
                 throttle: a,
@@ -63830,14 +63897,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
             jt =
                 ((gt = 'MozPerspective' in gt),
                 !window.L_DISABLE_3D && (It || Dt || gt) && !Mt && !Et),
-            Bt = (Yi = 'undefined' != typeof orientation || I('mobile')) && wt,
-            Lt = Yi && Dt,
+            Bt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
+            Lt = Ki && Dt,
             Rt = !window.PointerEvent && window.MSPointerEvent,
             Ot = !(!window.PointerEvent && !Rt),
             Ft = 'ontouchstart' in window || !!window.TouchEvent,
             Nt = !window.L_NO_TOUCH && (Ft || Ot),
-            Ht = Yi && Ct,
-            qt = Yi && At,
+            Ht = Ki && Ct,
+            qt = Ki && At,
             $t =
                 1 <
                 (window.devicePixelRatio ||
@@ -63885,7 +63952,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 webkit3d: Dt,
                 gecko3d: gt,
                 any3d: jt,
-                mobile: Yi,
+                mobile: Ki,
                 mobileWebkit: Bt,
                 mobileWebkit3d: Lt,
                 msPointer: Rt,
@@ -63918,13 +63985,13 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 mac: 0 === navigator.platform.indexOf('Mac'),
                 linux: 0 === navigator.platform.indexOf('Linux'),
             },
-            Yt = Zt.msPointer ? 'MSPointerDown' : 'pointerdown',
-            Kt = Zt.msPointer ? 'MSPointerMove' : 'pointermove',
+            Kt = Zt.msPointer ? 'MSPointerDown' : 'pointerdown',
+            Yt = Zt.msPointer ? 'MSPointerMove' : 'pointermove',
             Jt = Zt.msPointer ? 'MSPointerUp' : 'pointerup',
             Qt = Zt.msPointer ? 'MSPointerCancel' : 'pointercancel',
             Xt = {
-                touchstart: Yt,
-                touchmove: Kt,
+                touchstart: Kt,
+                touchmove: Yt,
                 touchend: Jt,
                 touchcancel: Qt,
             },
@@ -64001,8 +64068,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 toBack: U,
                 hasClass: G,
                 addClass: Z,
-                removeClass: Y,
-                setClass: K,
+                removeClass: K,
+                setClass: Y,
                 getClass: J,
                 setOpacity: Q,
                 testProp: X,
@@ -65147,7 +65214,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     this.fire('move');
                 },
                 _onPanTransitionEnd: function () {
-                    (Y(this._mapPane, 'leaflet-pan-anim'),
+                    (K(this._mapPane, 'leaflet-pan-anim'),
                         this.fire('moveend'));
                 },
                 _tryAnimatedPan: function (e, t) {
@@ -65258,7 +65325,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 },
                 _onZoomTransitionEnd: function () {
                     this._animatingZoom &&
-                        (this._mapPane && Y(this._mapPane, 'leaflet-zoom-anim'),
+                        (this._mapPane && K(this._mapPane, 'leaflet-zoom-anim'),
                         (this._animatingZoom = !1),
                         this._move(
                             this._animateToCenter,
@@ -65450,7 +65517,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     'leaflet-control-layers-scrollbar'
                                 ),
                                 (this._section.style.height = e + 'px'))
-                            :   Y(
+                            :   K(
                                     this._section,
                                     'leaflet-control-layers-scrollbar'
                                 ),
@@ -65460,7 +65527,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     },
                     collapse: function () {
                         return (
-                            Y(
+                            K(
                                 this._container,
                                 'leaflet-control-layers-expanded'
                             ),
@@ -65774,8 +65841,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 _updateDisabled: function () {
                     var e = this._map,
                         t = 'leaflet-disabled';
-                    (Y(this._zoomInButton, t),
-                        Y(this._zoomOutButton, t),
+                    (K(this._zoomInButton, t),
+                        K(this._zoomOutButton, t),
                         this._zoomInButton.setAttribute(
                             'aria-disabled',
                             'false'
@@ -66120,9 +66187,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     this._enabled && this.finishDrag();
                 },
                 finishDrag: function (e) {
-                    (Y(document.body, 'leaflet-dragging'),
+                    (K(document.body, 'leaflet-dragging'),
                         this._lastTarget &&
-                            (Y(this._lastTarget, 'leaflet-drag-target'),
+                            (K(this._lastTarget, 'leaflet-drag-target'),
                             (this._lastTarget = null)),
                         de(document, 'mousemove touchmove', this._onMove, this),
                         de(
@@ -66655,7 +66722,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         )
                         .disable(),
                         this._marker._icon &&
-                            Y(this._marker._icon, 'leaflet-marker-draggable'));
+                            K(this._marker._icon, 'leaflet-marker-draggable'));
                 },
                 moved: function () {
                     return this._draggable && this._draggable._moved;
@@ -67778,7 +67845,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         )))
                     :   $(this._container),
                         this.options.interactive &&
-                            (Y(this._container, 'leaflet-interactive'),
+                            (K(this._container, 'leaflet-interactive'),
                             this.removeInteractiveTarget(this._container)));
                 },
                 getLatLng: function () {
@@ -68045,7 +68112,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     e.offsetHeight)),
                                 this.options.maxHeight),
                             s = 'leaflet-popup-scrolled';
-                        ((n && n < i ? ((t.height = n + 'px'), Z) : Y)(e, s),
+                        ((n && n < i ? ((t.height = n + 'px'), Z) : K)(e, s),
                             (this._containerWidth =
                                 this._container.offsetWidth));
                     },
@@ -68281,10 +68348,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             .subtract(w(t, i, !0))
                             .add(l)
                             .add(c)),
-                            Y(n, 'leaflet-tooltip-right'),
-                            Y(n, 'leaflet-tooltip-left'),
-                            Y(n, 'leaflet-tooltip-top'),
-                            Y(n, 'leaflet-tooltip-bottom'),
+                            K(n, 'leaflet-tooltip-right'),
+                            K(n, 'leaflet-tooltip-left'),
+                            K(n, 'leaflet-tooltip-top'),
+                            K(n, 'leaflet-tooltip-bottom'),
                             Z(n, 'leaflet-tooltip-' + a),
                             te(n, e));
                     },
@@ -69622,7 +69689,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 _handleMouseOut: function (e) {
                     var t = this._hoveredLayer;
                     t &&
-                        (Y(this._container, 'leaflet-interactive'),
+                        (K(this._container, 'leaflet-interactive'),
                         this._fireEvent([t], e, 'mouseout'),
                         (this._hoveredLayer = null),
                         (this._mouseHoverThrottled = !1));
@@ -70040,7 +70107,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             },
             _finish: function () {
                 (this._moved &&
-                    ($(this._box), Y(this._container, 'leaflet-crosshair')),
+                    ($(this._box), K(this._container, 'leaflet-crosshair')),
                     ht(),
                     se(),
                     de(
@@ -70097,7 +70164,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     :   t.setZoomAround(e.containerPoint, i);
                 },
             })));
-        var Yi =
+        var Ki =
                 (hi.addInitHook('addHandler', 'doubleClickZoom', jt),
                 hi.mergeOptions({
                     dragging: !0,
@@ -70147,8 +70214,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             (this._times = []));
                     },
                     removeHooks: function () {
-                        (Y(this._map._container, 'leaflet-grab'),
-                            Y(this._map._container, 'leaflet-touch-drag'),
+                        (K(this._map._container, 'leaflet-grab'),
+                            K(this._map._container, 'leaflet-touch-drag'),
                             this._draggable.disable());
                     },
                     moved: function () {
@@ -70296,9 +70363,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             :   a.fire('moveend'));
                     },
                 })),
-            Ki =
+            Yi =
                 ((Bt =
-                    (hi.addInitHook('addHandler', 'dragging', Yi),
+                    (hi.addInitHook('addHandler', 'dragging', Ki),
                     hi.mergeOptions({ keyboard: !0, keyboardPanDelta: 80 }),
                     yt.extend({
                         keyCodes: {
@@ -70643,7 +70710,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 ));
                         },
                         removeHooks: function () {
-                            (Y(this._map._container, 'leaflet-touch-zoom'),
+                            (K(this._map._container, 'leaflet-touch-zoom'),
                                 de(
                                     this._map._container,
                                     'touchstart',
@@ -70792,7 +70859,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 hi.addInitHook('addHandler', 'touchZoom', Ot),
                 (hi.BoxZoom = gt),
                 (hi.DoubleClickZoom = jt),
-                (hi.Drag = Yi),
+                (hi.Drag = Ki),
                 (hi.Keyboard = Bt),
                 (hi.ScrollWheelZoom = Lt),
                 (hi.TapHold = Rt),
@@ -70911,7 +70978,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 }),
                 window.L);
         ((e.noConflict = function () {
-            return ((window.L = Ki), this);
+            return ((window.L = Yi), this);
         }),
             (window.L = e));
     }),
@@ -72442,8 +72509,8 @@ class XYLeafletWrapper {
         const t = e.getLatLng();
         return this.isVisible(t);
     }
-    isVisible(e) {
-        return this.#o(e);
+    isVisible(e, t = !0) {
+        return this.#o(e, t);
     }
     getCenter() {
         return this.#i.getCenter();
@@ -72610,8 +72677,11 @@ class XYLeafletWrapper {
                     (t.style.backgroundColor = 'white'),
                     (t.style.width = '30px'),
                     (t.style.height = '30px'),
-                    (t.onclick = function () {
-                        (toggleViewportFilter(),
+                    L.DomEvent.disableClickPropagation(t),
+                    L.DomEvent.disableScrollPropagation(t),
+                    (t.onclick = function (i) {
+                        (i.stopPropagation(),
+                            toggleViewportFilter(),
                             t.classList.add(
                                 mapViewportFilter ?
                                     'map-viewport-filter-active'
@@ -72634,9 +72704,10 @@ class XYLeafletWrapper {
         const i = MAP_EVENT_MAPPING[e][this.mapProvider];
         i && this.#i.addEventListener(i, t);
     }
-    #o(e) {
-        let t = e;
-        return this.#i.getBounds().pad(this.#i.options.padding).contains(t);
+    #o(e, t = !0) {
+        let i = e,
+            n = this.#i.getBounds();
+        return (t && (n = n.pad(this.#i.options.padding)), n.contains(i));
     }
     #r(e, t) {
         let i = e.name;
@@ -72898,6 +72969,8 @@ class XYLeafletCanvasWrapper {
                     (t.style.backgroundColor = 'white'),
                     (t.style.width = '30px'),
                     (t.style.height = '30px'),
+                    L.DomEvent.disableClickPropagation(t),
+                    L.DomEvent.disableScrollPropagation(t),
                     (t.onclick = function (i) {
                         (i.stopPropagation(),
                             toggleViewportFilter(),
@@ -73008,8 +73081,8 @@ class XYMapKitWrapper {
             i = [t.latitude, t.longitude];
         return this.isVisible(i);
     }
-    isVisible(e) {
-        return this.#v(e);
+    isVisible(e, t = !0) {
+        return this.#v(e, t);
     }
     getCenter() {
         let e = {};
@@ -73177,22 +73250,23 @@ class XYMapKitWrapper {
         const i = MAP_EVENT_MAPPING[e][this.mapProvider];
         i && (e === MapEventTypes.WHEEL || this.#f.addEventListener(i, t));
     }
-    #v(e) {
-        const t = this.#f.visibleMapRect,
-            i = t.size.width * DEFAULT_PADDING,
-            n = t.size.height * DEFAULT_PADDING,
-            s = new mapkit.MapRect(
-                t.origin.x - i,
-                t.origin.y - n,
-                t.size.width + 2 * i,
-                t.size.height + 2 * n
+    #v(e, t = !0) {
+        const i = this.#f.visibleMapRect;
+        let n = i.size.width,
+            s = i.size.height;
+        t && ((n *= DEFAULT_PADDING), (s *= DEFAULT_PADDING));
+        const a = new mapkit.MapRect(
+                i.origin.x - n,
+                i.origin.y - s,
+                i.size.width + 2 * n,
+                i.size.height + 2 * s
             ),
-            a = new mapkit.Coordinate(e[0], e[1]).toMapPoint();
+            o = new mapkit.Coordinate(e[0], e[1]).toMapPoint();
         return (
-            a.x >= s.origin.x &&
-            a.y >= s.origin.y &&
-            a.x <= s.origin.x + s.size.width &&
-            a.y <= s.origin.y + s.size.height
+            o.x >= a.origin.x &&
+            o.y >= a.origin.y &&
+            o.x <= a.origin.x + a.size.width &&
+            o.y <= a.origin.y + a.size.height
         );
     }
     #b(e, t) {
@@ -79516,12 +79590,12 @@ if ('undefined' == typeof jQuery)
             var i = e.ownerDocument.createRange();
             return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
         }
-        function Y(e) {
+        function K(e) {
             for (var t = 0, i = 0; e;)
                 ((t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent));
             return { left: t, top: i };
         }
-        function K(e, t) {
+        function Y(e, t) {
             var i,
                 n,
                 s = e.style;
@@ -79547,7 +79621,7 @@ if ('undefined' == typeof jQuery)
             return n;
         }
         function J(e, t, i) {
-            var n = K(e, t);
+            var n = Y(e, t);
             return (
                 !!n &&
                 (!i || n === i || (Array.isArray(i) && i.indexOf(n) > -1))
@@ -80037,7 +80111,7 @@ if ('undefined' == typeof jQuery)
                 V,
                 U,
                 Z,
-                K,
+                Y,
                 J,
                 Q,
                 ee,
@@ -80066,8 +80140,8 @@ if ('undefined' == typeof jQuery)
                 Ue,
                 Ge,
                 Ze,
-                Ye,
                 Ke,
+                Ye,
                 Je,
                 Qe,
                 Xe,
@@ -80122,7 +80196,7 @@ if ('undefined' == typeof jQuery)
                             kt.autofocus && ot(),
                             mt(),
                             nt(),
-                            K.call('ready'),
+                            Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t));
                     };
                     (p(je, 'load', n), 'complete' === Be.readyState && n());
@@ -80130,9 +80204,9 @@ if ('undefined' == typeof jQuery)
                 (Ie = function () {
                     var e = kt.plugins;
                     ((e = e ? e.toString().split(',') : []),
-                        (K = new ne(_t)),
+                        (Y = new ne(_t)),
                         e.forEach(function (e) {
-                            K.register(e.trim());
+                            Y.register(e.trim());
                         }));
                 }),
                 (De = function () {
@@ -80204,7 +80278,7 @@ if ('undefined' == typeof jQuery)
                             );
                     (p(Be, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ye),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
                         p(T, 'keypress', Ze),
                         p(T, 'keydown', Ue),
@@ -80230,7 +80304,7 @@ if ('undefined' == typeof jQuery)
                         p(B, 'keydown', Ue),
                         p(B, i, Je),
                         p(B, n, Qe),
-                        p(S, 'mousedown', Ke),
+                        p(S, 'mousedown', Ye),
                         p(S, s, st),
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
@@ -80527,16 +80601,16 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (_t.destroy = function () {
-                    if (K) {
-                        (K.destroy(),
+                    if (Y) {
+                        (Y.destroy(),
                             (Z = null),
                             (O = null),
-                            (K = null),
+                            (Y = null),
                             L && d(L),
                             m(Be, 'click', Xe));
                         var t = e.form;
                         (t &&
-                            (m(t, 'reset', Ye),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
                             d(B),
                             d(l),
@@ -80638,7 +80712,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (Ve = function (e) {
                     var t = r('div', {}, S);
-                    (K.call('pasteRaw', e),
+                    (Y.call('pasteRaw', e),
                         D(o, 'pasteraw', e),
                         e.html ?
                             ((t.innerHTML = e.html), W(t))
@@ -80646,11 +80720,11 @@ if ('undefined' == typeof jQuery)
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
                         (n.val = i.fragmentToSource(n.val, S, J)),
-                        K.call('paste', n),
+                        Y.call('paste', n),
                         D(o, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
-                        K.call('pasteHtml', n),
+                        Y.call('pasteHtml', n),
                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
                 }),
                 (_t.closeDropDown = function (e) {
@@ -80668,7 +80742,7 @@ if ('undefined' == typeof jQuery)
                             Ae(),
                             v((n = h(T, '#sceditor-end-marker')[0])),
                             (s = T.scrollTop),
-                            (a = Y(n).top + 1.5 * n.offsetHeight - o),
+                            (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
                             (a > s || a + o < s) && (T.scrollTop = a),
                             dt(!1),
@@ -80989,10 +81063,10 @@ if ('undefined' == typeof jQuery)
                             return !1;
                     });
                 }),
-                (Ye = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
-                (Ke = function () {
+                (Ye = function () {
                     (_t.closeDropDown(), (O = null));
                 }),
                 (_t._ = function () {
@@ -81008,7 +81082,7 @@ if ('undefined' == typeof jQuery)
                     );
                 }),
                 (Qe = function (e) {
-                    K && K.call(e.type + 'Event', e, _t);
+                    Y && Y.call(e.type + 'Event', e, _t);
                     var t = (e.target === B ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
@@ -81316,8 +81390,8 @@ if ('undefined' == typeof jQuery)
                 }),
                 (dt = function (e) {
                     if (
-                        K &&
-                        (K.hasHandler('valuechangedEvent') || dt.hasHandler)
+                        Y &&
+                        (Y.hasHandler('valuechangedEvent') || dt.hasHandler)
                     ) {
                         var t,
                             i = _t.sourceMode(),
@@ -82288,8 +82362,8 @@ if ('undefined' == typeof jQuery)
                     getSibling: U,
                     removeWhiteSpace: G,
                     extractContents: Z,
-                    getOffset: Y,
-                    getStyle: K,
+                    getOffset: K,
+                    getStyle: Y,
                     hasStyle: J,
                 },
                 locale: le.locale,
@@ -82717,12 +82791,12 @@ if ('undefined' == typeof jQuery)
             var i = e.ownerDocument.createRange();
             return (i.setStartBefore(e), i.setEndAfter(t), i.extractContents());
         }
-        function Y(e) {
+        function K(e) {
             for (var t = 0, i = 0; e;)
                 ((t += e.offsetLeft), (i += e.offsetTop), (e = e.offsetParent));
             return { left: t, top: i };
         }
-        function K(e, t) {
+        function Y(e, t) {
             var i,
                 n,
                 s = e.style;
@@ -82748,7 +82822,7 @@ if ('undefined' == typeof jQuery)
             return n;
         }
         function J(e, t, i) {
-            var n = K(e, t);
+            var n = Y(e, t);
             return (
                 !!n &&
                 (!i || n === i || (Array.isArray(i) && i.indexOf(n) > -1))
@@ -83238,7 +83312,7 @@ if ('undefined' == typeof jQuery)
                 V,
                 U,
                 Z,
-                K,
+                Y,
                 J,
                 Q,
                 ee,
@@ -83267,8 +83341,8 @@ if ('undefined' == typeof jQuery)
                 Ue,
                 Ge,
                 Ze,
-                Ye,
                 Ke,
+                Ye,
                 Je,
                 Qe,
                 Xe,
@@ -83323,7 +83397,7 @@ if ('undefined' == typeof jQuery)
                             kt.autofocus && ot(),
                             mt(),
                             nt(),
-                            K.call('ready'),
+                            Y.call('ready'),
                             'onReady' in i && i.onReady.call(_t));
                     };
                     (p(je, 'load', n), 'complete' === Be.readyState && n());
@@ -83331,9 +83405,9 @@ if ('undefined' == typeof jQuery)
                 (Ie = function () {
                     var e = kt.plugins;
                     ((e = e ? e.toString().split(',') : []),
-                        (K = new ne(_t)),
+                        (Y = new ne(_t)),
                         e.forEach(function (e) {
-                            K.register(e.trim());
+                            Y.register(e.trim());
                         }));
                 }),
                 (De = function () {
@@ -83405,7 +83479,7 @@ if ('undefined' == typeof jQuery)
                             );
                     (p(Be, 'click', Xe),
                         t &&
-                            (p(t, 'reset', Ye),
+                            (p(t, 'reset', Ke),
                             p(t, 'submit', _t.updateOriginal, be)),
                         p(T, 'keypress', Ze),
                         p(T, 'keydown', Ue),
@@ -83431,7 +83505,7 @@ if ('undefined' == typeof jQuery)
                         p(B, 'keydown', Ue),
                         p(B, i, Je),
                         p(B, n, Qe),
-                        p(S, 'mousedown', Ke),
+                        p(S, 'mousedown', Ye),
                         p(S, s, st),
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
@@ -83728,16 +83802,16 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (_t.destroy = function () {
-                    if (K) {
-                        (K.destroy(),
+                    if (Y) {
+                        (Y.destroy(),
                             (Z = null),
                             (O = null),
-                            (K = null),
+                            (Y = null),
                             L && d(L),
                             m(Be, 'click', Xe));
                         var t = e.form;
                         (t &&
-                            (m(t, 'reset', Ye),
+                            (m(t, 'reset', Ke),
                             m(t, 'submit', _t.updateOriginal)),
                             d(B),
                             d(l),
@@ -83839,7 +83913,7 @@ if ('undefined' == typeof jQuery)
                 }),
                 (Ve = function (e) {
                     var t = r('div', {}, S);
-                    (K.call('pasteRaw', e),
+                    (Y.call('pasteRaw', e),
                         D(o, 'pasteraw', e),
                         e.html ?
                             ((t.innerHTML = e.html), W(t))
@@ -83847,11 +83921,11 @@ if ('undefined' == typeof jQuery)
                     var n = { val: t.innerHTML };
                     ('fragmentToSource' in i &&
                         (n.val = i.fragmentToSource(n.val, S, J)),
-                        K.call('paste', n),
+                        Y.call('paste', n),
                         D(o, 'paste', n),
                         'fragmentToHtml' in i &&
                             (n.val = i.fragmentToHtml(n.val, J)),
-                        K.call('pasteHtml', n),
+                        Y.call('pasteHtml', n),
                         _t.wysiwygEditorInsertHtml(n.val, null, !0));
                 }),
                 (_t.closeDropDown = function (e) {
@@ -83869,7 +83943,7 @@ if ('undefined' == typeof jQuery)
                             Ae(),
                             v((n = h(T, '#sceditor-end-marker')[0])),
                             (s = T.scrollTop),
-                            (a = Y(n).top + 1.5 * n.offsetHeight - o),
+                            (a = K(n).top + 1.5 * n.offsetHeight - o),
                             g(n),
                             (a > s || a + o < s) && (T.scrollTop = a),
                             dt(!1),
@@ -84190,10 +84264,10 @@ if ('undefined' == typeof jQuery)
                             return !1;
                     });
                 }),
-                (Ye = function () {
+                (Ke = function () {
                     _t.val(e.value);
                 }),
-                (Ke = function () {
+                (Ye = function () {
                     (_t.closeDropDown(), (O = null));
                 }),
                 (_t._ = function () {
@@ -84209,7 +84283,7 @@ if ('undefined' == typeof jQuery)
                     );
                 }),
                 (Qe = function (e) {
-                    K && K.call(e.type + 'Event', e, _t);
+                    Y && Y.call(e.type + 'Event', e, _t);
                     var t = (e.target === B ? 'scesrc' : 'scewys') + e.type;
                     ft[t] &&
                         ft[t].forEach(function (t) {
@@ -84517,8 +84591,8 @@ if ('undefined' == typeof jQuery)
                 }),
                 (dt = function (e) {
                     if (
-                        K &&
-                        (K.hasHandler('valuechangedEvent') || dt.hasHandler)
+                        Y &&
+                        (Y.hasHandler('valuechangedEvent') || dt.hasHandler)
                     ) {
                         var t,
                             i = _t.sourceMode(),
@@ -85489,8 +85563,8 @@ if ('undefined' == typeof jQuery)
                     getSibling: U,
                     removeWhiteSpace: G,
                     extractContents: Z,
-                    getOffset: Y,
-                    getStyle: K,
+                    getOffset: K,
+                    getStyle: Y,
                     hasStyle: J,
                 },
                 locale: le.locale,
@@ -91909,7 +91983,8 @@ const MAIN_BROADCAST_TYPE = 'MAIN',
 class XYVirtualScroller {
     constructor(e, t, i = {}) {
         if (
-            ((this.container = e),
+            ((this.vlDebug = e.vlDebug || !1),
+            (this.container = e),
             (this.content = e.querySelector('.virtual-content')),
             (this.renderItemFn = i.renderItem || null),
             (this.onRowClick = i.onRowClick || null),
@@ -92223,10 +92298,18 @@ class XYVirtualScroller {
     updateItem(e, t) {
         ((this.items[e] = t),
             this._markAsDirty(),
-            this.itemsUpdateTimeout && clearTimeout(this.itemsUpdateTimeout),
-            (this.itemsUpdateTimeout = setTimeout(() => {
-                (this.rebuildPrefixSums(), this.onScroll());
-            }, 100)));
+            0 != this._isVisibleIndex(e) ?
+                (this.itemsUpdateTimeout &&
+                    clearTimeout(this.itemsUpdateTimeout),
+                (this.ticking = !0),
+                (this.itemsUpdateTimeout = setTimeout(() => {
+                    (this.rebuildPrefixSums(),
+                        this.onScroll(),
+                        (this.ticking = !1));
+                }, 50)))
+            :   this._vl_Log(
+                    `skipping updateItem for invisible index: ${e} visible: ${this._isVisibleIndex(e)}`
+                ));
     }
     findItemIndexById(e) {
         return this.items.findIndex(t => t.id === e);
@@ -92244,14 +92327,23 @@ class XYVirtualScroller {
     getFirstItem() {
         return this.items[0];
     }
-    getVisibleItems() {
+    _isVisibleIndex(e) {
+        const t = this._getVisibleIdx();
+        return e >= t.first && e <= t.last;
+    }
+    _getVisibleIdx() {
         const e = this.container.scrollTop,
             t = e + this.viewportHeight,
             i = Math.max(0, e - this.bufferPx),
-            n = t + this.bufferPx,
-            s = this.findIndexForOffset(i),
-            a = this.findIndexForOffset(n);
-        return this.items.slice(s, a + 1);
+            n = t + this.bufferPx;
+        return {
+            first: this.findIndexForOffset(i),
+            last: this.findIndexForOffset(n),
+        };
+    }
+    getVisibleItems() {
+        const e = this._getVisibleIdx();
+        return this.items.slice(e.first, e.last + 1);
     }
     _markAsDirty() {
         this.dirty = !0;
@@ -92294,6 +92386,15 @@ class XYVirtualScroller {
         if ('dom' === t.type) return t.value;
         const i = document.createElement('template');
         return ((i.innerHTML = t.value), i.firstElementChild);
+    }
+    _vl_Log(e) {
+        this.vlDebug && console.log(e);
+    }
+    enableDebug() {
+        this.vlDebug = !0;
+    }
+    disableDebug() {
+        this.vlDebug = !1;
     }
 }
 class XYVirtualListTwoTierCache {
