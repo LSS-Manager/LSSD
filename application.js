@@ -1834,7 +1834,7 @@ function vehicleDrive(e, t) {
         (e.in = flavouredAsset(e.in)));
     var i = new Date(),
         n = !0;
-    if ('' != e.mid && !alliance_show_not_involved_vehicle) {
+    if (!t && '' != e.mid && !alliance_show_not_involved_vehicle) {
         const t = parseInt(e.mid),
             s = mission_markers_per_id.get(t),
             a =
