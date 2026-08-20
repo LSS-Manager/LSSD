@@ -16181,6 +16181,288 @@ body.dark .dark-visible {
     color: #ddd;
     border-bottom: #000;
 }
+.hospital-overview-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+.hospital-overview-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.hospital-overview-body .breadcrumb {
+    flex: 0 0 auto;
+}
+.hospital-overview-body .nav-tabs {
+    flex: 0 0 auto;
+}
+.hospital-overview-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding-top: 15px;
+}
+.hospital-overview-content > .tab-pane.active {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+}
+.hospital-overview-filters {
+    flex: 0 0 auto;
+    margin-bottom: 15px;
+}
+.hospital-overview-filter {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+.hospital-overview-virtual-table .hospital-overview-virtual-list {
+    border: 0;
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+}
+.hospital-overview-virtual-table {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+}
+.hospital-overview-virtual-table-header {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 15px;
+    padding: 8px;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+}
+.hospital-overview-extension-selected .hospital-overview-virtual-table-header {
+    grid-template-columns: 1fr auto auto;
+}
+.hospital-overview-actions-header,
+.hospital-overview-actions-cell {
+    display: none;
+}
+.hospital-overview-extension-selected .hospital-overview-actions-header,
+.hospital-overview-extension-selected .hospital-overview-actions-cell {
+    display: block;
+}
+.hospital-overview-desktop-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 15px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+.hospital-overview-extension-selected .hospital-overview-desktop-row {
+    grid-template-columns: 1fr auto auto;
+}
+.hospital-overview-desktop-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+body.dark .hospital-overview-desktop-row {
+    background-color: #323232;
+}
+body.dark .hospital-overview-desktop-row:nth-child(even) {
+    background-color: #505050;
+}
+.hospital-overview-status-cell {
+    text-align: right;
+}
+.hospital-overview-boost-form {
+    display: inline-block;
+}
+.hospital-overview-row-actions .btn {
+    margin-left: 5px;
+}
+.hospital-overview-boost-status .boost-countdown {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 4px;
+}
+.hospital-overview-boost-status .boost-arrow-icon {
+    margin-right: 5px;
+}
+.hospital-overview-footer {
+    background-color: #c9302c;
+    flex: 0 0 auto;
+    min-height: 50px;
+    margin-bottom: 0;
+}
+.hospital-overview-footer-actions {
+    padding: 7px 5px;
+}
+.multiple-building-extensions-extension
+    > .multiple-building-extensions-purchase-form {
+    width: 185px;
+}
+.multiple-building-extensions-layout {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+.multiple-building-extensions-controls {
+    flex: 1 1 48%;
+    min-width: 0;
+    margin-right: 20px;
+}
+.multiple-building-extensions-heading {
+    margin-bottom: 10px;
+}
+.multiple-building-extensions-heading h2 {
+    margin: 0 20px 0 0;
+}
+.multiple-building-extensions-extension {
+    max-width: 640px;
+}
+.multiple-building-extensions-extension h3 {
+    margin-top: 0;
+}
+.multiple-building-extensions-selection-status {
+    min-height: 20px;
+    margin: 10px 0;
+}
+.multiple-building-extensions-panel {
+    flex: 1 1 48%;
+    min-width: 0;
+    min-height: 260px;
+    margin-bottom: 10px;
+}
+.multiple-building-extensions-panel-body {
+    min-height: 0;
+}
+.multiple-building-extensions-panel-body-desktop {
+    background: linear-gradient(
+        to right,
+        #505050,
+        #505050 50%,
+        #dddddd,
+        #dddddd 50%
+    );
+}
+.multiple-building-extensions-selector {
+    min-height: 0;
+}
+.multiple-building-extensions-list {
+    flex: 1 1 0;
+    min-width: 0;
+}
+.multiple-building-extensions-list > .panel {
+    height: 100%;
+    margin-bottom: 0;
+}
+.multiple-building-extensions-list > .panel > .panel-body {
+    min-height: 0;
+}
+.multiple-building-extensions-search {
+    margin-bottom: 8px;
+}
+.multiple-building-extensions-search > .input-group-addon {
+    top: 0;
+}
+.multiple-building-extensions-virtual-list {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 160px;
+}
+.multiple-building-extensions-arrows {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 72px;
+    height: fit-content;
+    margin: 0 10px;
+    padding: 6px;
+    background: rgba(132, 132, 132, 0.2);
+    border-radius: 5px;
+}
+.multiple-building-extensions-arrows .arrow-icon {
+    width: 40px;
+    opacity: 0.8;
+}
+.multiple-building-extensions-empty {
+    text-align: center;
+    font-style: italic;
+}
+.multiple-building-extensions-info {
+    margin: 15px 0 10px;
+}
+.multiple-building-extensions-mobile {
+    min-height: 0;
+}
+.multiple-building-extensions-mobile > .tab-content {
+    min-height: 0;
+    padding-top: 10px;
+}
+.multiple-building-extensions-mobile > .tab-content > .tab-pane.active {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+}
+.hospital-overview-mobile-card .building_list_caption {
+    margin-bottom: 0;
+}
+.hospital-overview-mobile-card .list-group {
+    margin-bottom: 10px;
+}
+.hospital-overview-mobile-card .hospital-overview-mobile-body {
+    padding: 10px 15px;
+}
+.hospital-overview-mobile-card .hospital-overview-mobile-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hospital-overview-mobile-card .hospital-overview-boost-form .btn:first-child {
+    margin-left: 0;
+}
+@media (max-width: 767px) {
+    .hospital-overview-filter {
+        display: block;
+        margin-right: 0;
+    }
+    .hospital-overview-dispatch-center-select,
+    .hospital-overview-extension-select {
+        width: 100%;
+    }
+    .hospital-overview-row-actions .btn {
+        margin-top: 5px;
+    }
+    .multiple-building-extensions-layout {
+        flex-direction: column;
+    }
+    .multiple-building-extensions-controls {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+    .multiple-building-extensions-dispatch-center,
+    .multiple-building-extensions-extension {
+        max-width: none;
+        width: 100%;
+    }
+    .multiple-building-extensions-panel-body {
+        padding: 10px;
+    }
+    .hospital-overview-footer-actions > .btn,
+    .multiple-building-extensions-purchase-form {
+        width: 48%;
+    }
+}
 .education_description_container {
     margin-top: 10px;
 }

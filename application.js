@@ -6972,7 +6972,10 @@ function setupTimer(e) {
 }
 function stopTimer(e, t) {
     (t && clearInterval(t),
-        e && startedIntervals.has(e) && clearInterval(startedIntervals.get(e)));
+        e &&
+            startedIntervals.has(e) &&
+            (clearInterval(startedIntervals.get(e)),
+            startedIntervals.delete(e)));
 }
 function updateTimer(e) {
     let t = e.endTime - Date.now(),
@@ -7346,6 +7349,94 @@ function onVehicleGroupWorkerError(e) {
 }
 function terminateVehicleGroupWorker() {
     (terminateWorker(vehicleGroupWorker), (vehicleGroupWorker = null));
+}
+function startHospitalOverviewWorkerIfSupported(e, t, i, n = {}, s, a) {
+    const o = selectEncoding();
+    if (!window.Worker) return !1;
+    if (hospitalOverviewWorker) return hospitalOverviewWorker;
+    const r = new Worker(e);
+    return (
+        (r.onmessage = function (e) {
+            onHospitalOverviewWorkerMessage(e, s, a);
+        }),
+        (r.onerror = function (e) {
+            onHospitalOverviewWorkerError(e, a);
+        }),
+        r.postMessage({
+            encoding: o,
+            fetch_path: t,
+            context_params: {
+                scripts_to_import: i,
+                user_id: user_id,
+                locale: I18n.locale,
+                defaultLocale: I18n.defaultLocale,
+            },
+            fetch_params: n,
+        }),
+        r
+    );
+}
+function onHospitalOverviewWorkerMessage(e, t, i) {
+    const n = parseResponse(e.data);
+    ('response' === n.type &&
+        (t && 'function' == typeof t && t(n),
+        terminateHospitalOverviewWorker()),
+        'error' === n.type && onHospitalOverviewWorkerError(n, i));
+}
+function onHospitalOverviewWorkerError(e, t) {
+    (t && 'function' == typeof t && t(e), terminateHospitalOverviewWorker());
+}
+function terminateHospitalOverviewWorker() {
+    (terminateWorker(hospitalOverviewWorker), (hospitalOverviewWorker = null));
+}
+function startMultipleBuildingExtensionsWorkerIfSupported(
+    e,
+    t,
+    i,
+    n = {},
+    s,
+    a
+) {
+    const o = selectEncoding();
+    if (!window.Worker) return !1;
+    if (multipleBuildingExtensionsWorker)
+        return multipleBuildingExtensionsWorker;
+    const r = new Worker(e);
+    return (
+        (r.onmessage = function (e) {
+            onMultipleBuildingExtensionsWorkerMessage(e, s, a);
+        }),
+        (r.onerror = function (e) {
+            onMultipleBuildingExtensionsWorkerError(e, a);
+        }),
+        r.postMessage({
+            encoding: o,
+            fetch_path: t,
+            context_params: {
+                scripts_to_import: i,
+                user_id: user_id,
+                locale: I18n.locale,
+                defaultLocale: I18n.defaultLocale,
+            },
+            fetch_params: n,
+        }),
+        r
+    );
+}
+function onMultipleBuildingExtensionsWorkerMessage(e, t, i) {
+    const n = parseResponse(e.data);
+    ('response' === n.type &&
+        (t && 'function' == typeof t && t(n),
+        terminateMultipleBuildingExtensionsWorker()),
+        'error' === n.type && onMultipleBuildingExtensionsWorkerError(n, i));
+}
+function onMultipleBuildingExtensionsWorkerError(e, t) {
+    (t && 'function' == typeof t && t(e),
+        terminateMultipleBuildingExtensionsWorker());
+}
+function terminateMultipleBuildingExtensionsWorker() {
+    (terminateWorker(multipleBuildingExtensionsWorker),
+        (multipleBuildingExtensionsWorker = null));
 }
 function terminateWorker(e) {
     e && (e.terminate(), (e = null));
@@ -47760,6 +47851,8 @@ let missionsWorker,
     buildingsWorker,
     poiWorker,
     vehicleGroupWorker,
+    hospitalOverviewWorker,
+    multipleBuildingExtensionsWorker,
     vehiclesOnTheMoveLoadingTimer = !1,
     vehiclesOnTheMoveLoading = !1,
     beta_player = !1,
