@@ -1838,7 +1838,7 @@ function vehicleDrive(e, t) {
         const t = parseInt(e.mid),
             s = mission_markers_per_id.get(t),
             a =
-                s.involved ||
+                (s && s.involved) ||
                 missionParticipationFilters.started.missionIds.has(t);
         if (s && !a)
             return (
@@ -2606,8 +2606,7 @@ function check_and_initialize_locale_compare(e) {
     }
 }
 function searchMission() {
-    if (betaOptions.missions_vl) refreshMissionsVirtualList();
-    else {
+    if (!betaOptions.missions_vl) {
         var e = $('#search_input_field_missions').attr('search_class'),
             t = $('#search_input_field_missions').val().toUpperCase();
         ($('.' + e).each(function () {
@@ -8313,8 +8312,10 @@ function processMissionsFromWorker(e, t) {
         t && t());
 }
 function prepMCounters() {
-    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
-    for (let e in missionStateFilters) missionStateFilters[e].missionIds = [];
+    for (let e in missionTypeFilters)
+        missionTypeFilters[e].missionIds = new Set();
+    for (let e in missionStateFilters)
+        missionStateFilters[e].missionIds = new Set();
     for (let e in missionParticipationFilters)
         missionParticipationFilters[e].missionIds = new Set();
 }
@@ -8330,7 +8331,7 @@ function processMissionWorkerData(e) {
         t.forEach(e => {
             processMissionElementFromWorker(e);
             const t = new Proxy(e, object_proxy_handler);
-            (missions_data.set(t.id, t), updateMissionsCount(t));
+            missions_data.set(t.id, t);
         }),
         addMarkersToMap(t, i),
         (window.missionMarkerBulkAdd = !1),
@@ -8351,7 +8352,7 @@ function processMissionFromPush(e) {
         processMissionElementFromWorker(t));
     const n = new Proxy(t, object_proxy_handler);
     let s = missions_data.has(i);
-    if (((n.dirty = !0), missions_data.set(i, n), updateMissionsCount(n), s)) {
+    if (((n.dirty = !0), missions_data.set(i, n), s)) {
         let e = mission_markers_per_id.get(n.id);
         e && xy_map.updateMarker(n, e);
     } else xy_map.addMarkerToLayer(null, mission_markers_per_id.get(n.id));
@@ -8503,59 +8504,50 @@ function markMissionsDirty() {
     (missions_data.forEach(e => {
         e.dirty = !0;
     }),
-        betaOptions.missions_vl && refreshMissionsVirtualList(!1));
+        betaOptions.missions_vl && refreshMissionsVirtualList());
 }
 function openMissionDetails(e) {
     if (betaOptions.missions_vl && !missions_data.has(e)) return;
     lightboxOpen(buildMissionHref(e));
 }
 function missionSelectionUpdateButtons() {
-    betaOptions.missions_vl ?
-        missionSelectionUpdateButtonsNew()
-    :   missionSelectionUpdateButtonsOld();
+    if (betaOptions.missions_vl)
+        return (resetMissionsCount(), void missionSelectionUpdateButtonsNew());
+    missionSelectionUpdateButtonsOld();
+}
+function resetMissionsCount() {
+    for (let e in missionTypeFilters)
+        missionTypeFilters[e].missionIds = new Set();
+    for (let e in missionStateFilters)
+        missionStateFilters[e].missionIds = new Set();
+    missions_data.forEach(e => {
+        updateMissionsCount(e);
+    });
 }
 function updateMissionsCount(e, t = !1) {
     t ?
         removeFromAnyCount(e?.id)
     :   (0 === e.vehicle_state &&
-            (missionStateFilters.unattended.missionIds.push(e.id),
-            (missionStateFilters.attended.missionIds =
-                missionStateFilters.attended.missionIds.filter(
-                    t => t !== e.id
-                )),
-            (missionStateFilters.finishing.missionIds =
-                missionStateFilters.finishing.missionIds.filter(
-                    t => t !== e.id
-                ))),
+            (missionStateFilters.unattended.missionIds.add(e.id),
+            missionStateFilters.attended.missionIds.delete(e.id),
+            missionStateFilters.finishing.missionIds.delete(e.id)),
         1 === e.vehicle_state &&
-            (missionStateFilters.attended.missionIds.push(e.id),
-            (missionStateFilters.unattended.missionIds =
-                missionStateFilters.unattended.missionIds.filter(
-                    t => t !== e.id
-                )),
-            (missionStateFilters.finishing.missionIds =
-                missionStateFilters.finishing.missionIds.filter(
-                    t => t !== e.id
-                ))),
+            (missionStateFilters.attended.missionIds.add(e.id),
+            missionStateFilters.unattended.missionIds.delete(e.id),
+            missionStateFilters.finishing.missionIds.delete(e.id)),
         2 === e.vehicle_state &&
-            (missionStateFilters.finishing.missionIds.push(e.id),
-            (missionStateFilters.attended.missionIds =
-                missionStateFilters.attended.missionIds.filter(
-                    t => t !== e.id
-                )),
-            (missionStateFilters.unattended.missionIds =
-                missionStateFilters.unattended.missionIds.filter(
-                    t => t !== e.id
-                ))),
+            (missionStateFilters.finishing.missionIds.add(e.id),
+            missionStateFilters.attended.missionIds.delete(e.id),
+            missionStateFilters.unattended.missionIds.delete(e.id)),
         e.krankentransport || e.kt ?
-            missionTypeFilters.krankentransporte.missionIds.push(e.id)
+            missionTypeFilters.krankentransporte.missionIds.add(e.id)
         : e.sicherheitswache || e.sw ?
-            missionTypeFilters.sicherheitswache.missionIds.push(e.id)
+            missionTypeFilters.sicherheitswache.missionIds.add(e.id)
         : e.user_id !== user_id && null != e.user_id ?
-            missionTypeFilters.alliance.missionIds.push(e.id)
+            missionTypeFilters.alliance.missionIds.add(e.id)
         : e.user_id !== user_id && null == e.user_id ?
-            missionTypeFilters.alliance_event.missionIds.push(e.id)
-        :   missionTypeFilters.emergency.missionIds.push(e.id),
+            missionTypeFilters.alliance_event.missionIds.add(e.id)
+        :   missionTypeFilters.emergency.missionIds.add(e.id),
         e.ct && (criticalTransportMissionsPresent = !0),
         e.pt && (patientTransportMissionsPresent = !0));
 }
@@ -8563,26 +8555,14 @@ function removeFromAnyCount(e) {
     e &&
         (missionParticipationFilters.new.missionIds.delete(e),
         missionParticipationFilters.started.missionIds.delete(e),
-        (missionStateFilters.unattended.missionIds =
-            missionStateFilters.unattended.missionIds.filter(t => t !== e)),
-        (missionStateFilters.attended.missionIds =
-            missionStateFilters.attended.missionIds.filter(t => t !== e)),
-        (missionStateFilters.finishing.missionIds =
-            missionStateFilters.finishing.missionIds.filter(t => t !== e)),
-        (missionTypeFilters.krankentransporte.missionIds =
-            missionTypeFilters.krankentransporte.missionIds.filter(
-                t => t !== e
-            )),
-        (missionTypeFilters.sicherheitswache.missionIds =
-            missionTypeFilters.sicherheitswache.missionIds.filter(
-                t => t !== e
-            )),
-        (missionTypeFilters.alliance.missionIds =
-            missionTypeFilters.alliance.missionIds.filter(t => t !== e)),
-        (missionTypeFilters.alliance_event.missionIds =
-            missionTypeFilters.alliance_event.missionIds.filter(t => t !== e)),
-        (missionTypeFilters.emergency.missionIds =
-            missionTypeFilters.emergency.missionIds.filter(t => t !== e)));
+        missionStateFilters.unattended.missionIds.delete(e),
+        missionStateFilters.attended.missionIds.delete(e),
+        missionStateFilters.finishing.missionIds.delete(e),
+        missionTypeFilters.krankentransporte.missionIds.delete(e),
+        missionTypeFilters.sicherheitswache.missionIds.delete(e),
+        missionTypeFilters.alliance.missionIds.delete(e),
+        missionTypeFilters.alliance_event.missionIds.delete(e),
+        missionTypeFilters.emergency.missionIds.delete(e));
 }
 function missionSelectionUpdateButtonsNew() {
     for (let e in missionTypeFilters) {
@@ -8597,10 +8577,10 @@ function missionSelectionUpdateButtonsNew() {
                 (t = `<img class="icon icons8-Event-Accepted" src=${allianceEventMIcon_base64} width="15" height="15">`),
             'sicherheitswache' === e &&
                 (t = `<img class="icon icons8-Clock-Filled" src=${sicherheitswacheIcon_base64} width="15" height="15">`));
-        let i = missionTypeFilters[e].missionIds.length,
+        let i = missionTypeFilters[e].missionIds.size,
             n = missionTypeFilters[e].missionIds.filter(e =>
-                missionStateFilters.unattended.missionIds.includes(e)
-            ).length;
+                missionStateFilters.unattended.missionIds.has(e)
+            ).size;
         $(document.getElementById(`mission_select_${e}`)).html(
             `${t} ${n}/${i}`
         );
@@ -8624,26 +8604,27 @@ function missionSelectionUpdateButtonsOld() {
         c = 0;
     ((criticalTransportMissionsPresent = !1),
         (patientTransportMissionsPresent = !1));
-    for (let e in missionTypeFilters) missionTypeFilters[e].missionIds = [];
+    for (let e in missionTypeFilters)
+        missionTypeFilters[e].missionIds = new Set();
     (mission_markers_per_id.forEach(function (u) {
         (u.krankentransport ?
             (i++,
-            missionTypeFilters.krankentransporte.missionIds.push(u.mission_id),
+            missionTypeFilters.krankentransporte.missionIds.add(u.mission_id),
             0 == u.vehicle_state && n++)
         : u.sicherheitswache ?
             (l++,
-            missionTypeFilters.sicherheitswache.missionIds.push(u.mission_id),
+            missionTypeFilters.sicherheitswache.missionIds.add(u.mission_id),
             0 == u.vehicle_state && c++)
         : u.user_id != user_id && null != u.user_id ?
             (s++,
-            missionTypeFilters.alliance.missionIds.push(u.mission_id),
+            missionTypeFilters.alliance.missionIds.add(u.mission_id),
             0 == u.vehicle_state && a++)
         : u.user_id != user_id && null == u.user_id ?
             (o++,
-            missionTypeFilters.alliance_event.missionIds.push(u.mission_id),
+            missionTypeFilters.alliance_event.missionIds.add(u.mission_id),
             0 == u.vehicle_state && r++)
         :   (e++,
-            missionTypeFilters.emergency.missionIds.push(u.mission_id),
+            missionTypeFilters.emergency.missionIds.add(u.mission_id),
             0 == u.vehicle_state && t++),
             u.ct && (criticalTransportMissionsPresent = !0),
             u.pt && (patientTransportMissionsPresent = !0));
@@ -8768,11 +8749,9 @@ function updateMissionStateButtonsNew() {
             missionTypeFilters,
             missionParticipationFilters,
         ]),
-        t = e.filter(e =>
-            missionStateFilters.unattended.missionIds.includes(e)
-        ),
-        i = e.filter(e => missionStateFilters.attended.missionIds.includes(e)),
-        n = e.filter(e => missionStateFilters.finishing.missionIds.includes(e));
+        t = e.filter(e => missionStateFilters.unattended.missionIds.has(e)),
+        i = e.filter(e => missionStateFilters.attended.missionIds.has(e)),
+        n = e.filter(e => missionStateFilters.finishing.missionIds.has(e));
     ($('#mission_select_unattended .counter').html(t.length),
         $('#mission_select_attended .counter').html(i.length),
         $('#mission_select_finishing .counter').html(n.length));
@@ -8780,18 +8759,16 @@ function updateMissionStateButtonsNew() {
 function updateMissionStateButtonsOld() {
     if (missionMarkerBulkAdd || massAllianceMissionAdd || massMissionAdd)
         return !0;
-    ((missionStateFilters.unattended.missionIds = []),
-        (missionStateFilters.attended.missionIds = []),
-        (missionStateFilters.finishing.missionIds = []),
+    ((missionStateFilters.unattended.missionIds = new Set()),
+        (missionStateFilters.attended.missionIds = new Set()),
+        (missionStateFilters.finishing.missionIds = new Set()),
         mission_markers_per_id.forEach(function (e) {
             (0 == e.vehicle_state &&
-                missionStateFilters.unattended.missionIds.push(e.mission_id),
+                missionStateFilters.unattended.missionIds.add(e.mission_id),
                 1 == e.vehicle_state &&
-                    missionStateFilters.attended.missionIds.push(e.mission_id),
+                    missionStateFilters.attended.missionIds.add(e.mission_id),
                 2 == e.vehicle_state &&
-                    missionStateFilters.finishing.missionIds.push(
-                        e.mission_id
-                    ));
+                    missionStateFilters.finishing.missionIds.add(e.mission_id));
         }),
         updateMissionStateButtonsNew());
 }
@@ -8880,8 +8857,8 @@ function handleMissionTypeFilterChange(e, t) {
 }
 function updateNoMissionsMessages() {
     const e =
-        missionTypeFilters.alliance.missionIds.length <= 0 &&
-        missionTypeFilters.alliance_event.missionIds.length <= 0;
+        missionTypeFilters.alliance.missionIds.size <= 0 &&
+        missionTypeFilters.alliance_event.missionIds.size <= 0;
     ($(document.getElementById('patient_no_transports')).toggle(
         missionTypeFilters.krankentransporte.active &&
             !1 === patientTransportMissionsPresent
@@ -8899,7 +8876,7 @@ function updateNoMissionsMessages() {
         $(document.getElementById('emergency_no')).toggle(
             massMissionAddCompleted &&
                 missionTypeFilters.emergency.active &&
-                missionTypeFilters.emergency.missionIds.length <= 0
+                missionTypeFilters.emergency.missionIds.size <= 0
         ));
 }
 function addMissionParticipationsFromWorker(e) {
@@ -9624,7 +9601,7 @@ function formatTime(e, t) {
 function prepPumpProgress(e, t) {
     if (e.water_damage_pump_value) {
         let i = e.pumping_date_end > 0 ? 'progress-striped-inner-active' : '';
-        return `<div class='small' id='pumping_${e.id}'>${I18n.t('javascript.water_pumping_process')}\n    <div id='pumping_bar_outer_${e.id}' class='progress pumping_progress'>\n      <div id='pumping_bar_${e.id}' class='progress-bar progress-bar-info style=width:${e.live_current_water_damage_pump_value}%;'>\n        <div id='pumping_bar_striper_${e.id}'\n             class='${t} ${i}'\n             data-pumping_date_start='${1e3 * e.pumping_date_start}'\n             data-pumping_date_end='${1e3 * e.pumping_date_end}'\n             data-pumping_mission_value='${e.pumping_mission_value}'></div></div></div></div>`;
+        return `<div class='small' id='pumping_${e.id}'>${I18n.t('javascript.water_pumping_process')}\n    <div id='pumping_bar_outer_${e.id}' class='progress pumping_progress'>\n      <div id='pumping_bar_${e.id}' class='progress-bar progress-bar-info' style=width:${e.live_current_water_damage_pump_value}%;>\n        <div id='pumping_bar_striper_${e.id}'\n             class='${t} ${i}'\n             data-pumping_date_start='${1e3 * e.pumping_date_start}'\n             data-pumping_date_end='${1e3 * e.pumping_date_end}'\n             data-pumping_mission_value='${e.pumping_mission_value}'></div></div></div></div>`;
     }
     return '';
 }
@@ -9660,7 +9637,7 @@ function parseSearchValueInWorker(e) {
             ((e.caption = '[' + I18n.t('map.alliance') + '] ' + e.caption),
             (t = t + ' ' + I18n.t('map.alliance'))),
         '' != e.address && (t = t + ' ' + e.address),
-        (t = t.replace(/'/g, '&#039;')),
+        (t = t.replace(/'/g, '&#039;').toLowerCase()),
         (e.searchValue = t),
         t
     );
@@ -10006,6 +9983,16 @@ function identifyDefaultOrderBasedOnTarge(e) {
     String.prototype.includes ||
         (String.prototype.includes = function (e, t) {
             return (void 0 === t && (t = 0), -1 !== this.indexOf(e, t));
+        }),
+    Set.prototype.includes ||
+        (Set.prototype.includes = function (e) {
+            return !!~this.has(e);
+        }),
+    Set.prototype.filter ||
+        (Set.prototype.filter = function (e) {
+            let t = new Set();
+            for (let i of this) e(i) && t.add(i);
+            return t;
         }),
     (function (e) {
         'undefined' != typeof module && module.exports ?
@@ -47777,16 +47764,16 @@ var alliance_chat_ban_countdown_timer,
     criticalTransportMissionsPresent = !1,
     patientTransportMissionsPresent = !1,
     missionTypeFilters = {
-        emergency: { active: !0, missionIds: [] },
-        krankentransporte: { active: !0, missionIds: [] },
-        alliance: { active: !0, missionIds: [] },
-        alliance_event: { active: !0, missionIds: [] },
-        sicherheitswache: { active: !0, missionIds: [] },
+        emergency: { active: !0, missionIds: new Set() },
+        krankentransporte: { active: !0, missionIds: new Set() },
+        alliance: { active: !0, missionIds: new Set() },
+        alliance_event: { active: !0, missionIds: new Set() },
+        sicherheitswache: { active: !0, missionIds: new Set() },
     },
     missionStateFilters = {
-        unattended: { active: !0, missionIds: [] },
-        attended: { active: !0, missionIds: [] },
-        finishing: { active: !0, missionIds: [] },
+        unattended: { active: !0, missionIds: new Set() },
+        attended: { active: !0, missionIds: new Set() },
+        finishing: { active: !0, missionIds: new Set() },
     },
     missionParticipationFilters = {
         new: { active: !0, missionIds: new Set() },
@@ -66558,6 +66545,8 @@ class XYVirtualScroller {
             (this.bottomSpacer.style.height = `${n}px`));
     }
     setItems(e, t = {}) {
+        if (!e) return;
+        if (0 === this.count && 0 === e.length) return;
         this.itemsUpdateTimeout && clearTimeout(this.itemsUpdateTimeout);
         const i = t.preserveScroll ? this._captureAnchor() : null;
         if (
