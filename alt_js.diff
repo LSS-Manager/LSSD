@@ -1,5 +1,5 @@
 diff --git a/application.js b/application.alt.js
-index d0663aa..4b9416a 100644
+index ce7340b..4b9416a 100644
 --- a/application.js
 +++ b/application.alt.js
 @@ -113,7 +113,7 @@ function layerFactory(e) {
@@ -1499,6 +1499,24 @@ index d0663aa..4b9416a 100644
  }
  function registerExtensionTimer(e, t, i) {
      const n = `extension_${e}`,
+@@ -6679,7 +6679,7 @@ function taskProgressOnTick(e, t, i) {
+     timerUpdate(e, t, i);
+ }
+ function registerMissionCountdownTimer(e, t, i) {
+-    const n = `mission_countdown_${t}`,
++    const n = `mission_countdown_${e}`,
+         s = $(`#${t}`);
+     return (
+         TickManager.registerObject({
+@@ -6689,7 +6689,7 @@ function registerMissionCountdownTimer(e, t, i) {
+                 missionCountdownOnTick(e, t.$element, i);
+             },
+             onEnd: function ({ id: e, params: t, remainingTime: i }) {
+-                (missionCountdownOnTick(e, t.$element, i), location.reload());
++                missionCountdownOnTick(e, t.$element, i);
+             },
+             endDate: i,
+             params: { $element: s },
 @@ -6989,50 +6989,50 @@ function isDateValid(e) {
  }
  function displayJsAlertInfo(e, t, i, n = {}) {
@@ -24444,13 +24462,13 @@ index d0663aa..4b9416a 100644
 -                            p(C, 'keyup', lt),
 -                        p(C, 'blur', function () {
 -                            _t.val() || E(C, 'placeholder');
--                        }),
--                        p(C, 'focus', function () {
--                            z(C, 'placeholder');
 +                            p(T, 'keyup', lt),
 +                        p(T, 'blur', function () {
 +                            _t.val() || z(T, 'placeholder');
                          }),
+-                        p(C, 'focus', function () {
+-                            z(C, 'placeholder');
+-                        }),
 -                        p(O, 'blur', dt),
 -                        p(O, 'keyup', ht),
 -                        p(O, 'keydown', Ue),
@@ -24463,9 +24481,7 @@ index d0663aa..4b9416a 100644
                          p(T, 'focus', function () {
 -                            B = null;
 +                            E(T, 'placeholder');
-                         }),
--                        p(a, 'selectionchanged', ot),
--                        p(a, 'selectionchanged', tt),
++                        }),
 +                        p(B, 'blur', dt),
 +                        p(B, 'keyup', ht),
 +                        p(B, 'keydown', Ue),
@@ -24477,7 +24493,9 @@ index d0663aa..4b9416a 100644
 +                        p(S, 'keyup', nt),
 +                        p(S, 'focus', function () {
 +                            O = null;
-+                        }),
+                         }),
+-                        p(a, 'selectionchanged', ot),
+-                        p(a, 'selectionchanged', tt),
 +                        p(o, 'selectionchanged', at),
 +                        p(o, 'selectionchanged', tt),
                          p(

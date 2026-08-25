@@ -6679,7 +6679,7 @@ function taskProgressOnTick(e, t, i) {
     timerUpdate(e, t, i);
 }
 function registerMissionCountdownTimer(e, t, i) {
-    const n = `mission_countdown_${e}`,
+    const n = `mission_countdown_${t}`,
         s = $(`#${t}`);
     return (
         TickManager.registerObject({
@@ -6689,7 +6689,7 @@ function registerMissionCountdownTimer(e, t, i) {
                 missionCountdownOnTick(e, t.$element, i);
             },
             onEnd: function ({ id: e, params: t, remainingTime: i }) {
-                missionCountdownOnTick(e, t.$element, i);
+                (missionCountdownOnTick(e, t.$element, i), location.reload());
             },
             endDate: i,
             params: { $element: s },
