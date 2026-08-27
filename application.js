@@ -7216,27 +7216,27 @@ function onMissionsWorkerError(e) {
 function terminateMissionsWorker() {
     (terminateWorker(missionsWorker), (missionsWorker = null));
 }
-function startBuildingsWorkerIfSupported(e, t, i, n, s = !1) {
-    const o = selectEncoding();
+function startBuildingsWorkerIfSupported(e, t, i, n, s = !1, o = {}) {
+    const a = selectEncoding();
     if (!window.Worker) return !1;
     if (buildingsWorker) return buildingsWorker;
-    const a = new Worker(e);
+    const r = new Worker(e);
     return (
-        (a.onmessage = function (e) {
+        (r.onmessage = function (e) {
             (workerLog(
                 `Received buildingsWorker message at ${performance.now()}`
             ),
                 onBuildingsWorkerMessage(e, n));
         }),
-        (a.onerror = function (e) {
+        (r.onerror = function (e) {
             (workerLog(
                 `Received buildingsWorker error at ${performance.now()}`
             ),
                 onBuildingsWorkerError(e));
         }),
         workerLog(`Started buildingsWorker at ${performance.now()}`),
-        a.postMessage({
-            encoding: o,
+        r.postMessage({
+            encoding: a,
             fetch_path: t,
             context_params: {
                 scripts_to_import: i,
@@ -7251,8 +7251,9 @@ function startBuildingsWorkerIfSupported(e, t, i, n, s = !1) {
                 locale: I18n.locale,
                 defaultLocale: I18n.defaultLocale,
             },
+            fetch_params: o,
         }),
-        a
+        r
     );
 }
 function onBuildingsWorkerMessage(e, t) {
