@@ -1386,6 +1386,7 @@ function buildingMarkerAddSingle(e) {
             constructBuildingListElement(e),
         !0 === mobile_bridge_use && 4 === mobile_version && sendMobileBridge(e),
         (e.layer_id = xy_map.getLayerIdByBuildingParams(e)),
+        e.n_l || (e.n_l = e.name.toLowerCase()),
         building_markers_cache.push(e),
         building_markers_params_cache_per_id.set(e.id, e),
         buildings_data.set(e.id, e),
@@ -8082,7 +8083,8 @@ function processBuildingWorkerData(e) {
     if (!e) return;
     if (!e.buildings) return void $('#building_no').show();
     (e.buildings.forEach(e => {
-        e.layer_id = xy_map.getLayerIdByBuildingParams(e);
+        ((e.layer_id = xy_map.getLayerIdByBuildingParams(e)),
+            void 0 === e.n_l && (e.n_l = e.name.toLowerCase()));
         const t = new Proxy(e, object_proxy_handler);
         (building_markers_cache.push(t),
             building_markers_params_cache_per_id.set(t.id, t),
