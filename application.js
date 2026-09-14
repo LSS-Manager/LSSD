@@ -5590,14 +5590,14 @@ function update_vg(e) {
             scheduleHideAAOLoadingState()));
 }
 function get_elements_for_aao(e) {
-    return (
-        !1 === elements_for_aao_cache.has(e) &&
-            elements_for_aao_cache.set(
-                e,
-                Array.from(document.querySelectorAll(e))
-            ),
-        elements_for_aao_cache.get(e)
-    );
+    if (!1 === elements_for_aao_cache.has(e)) {
+        let t = Array.from(document.querySelectorAll(e));
+        (t.sort((e, t) => {
+            (e.dataset.distance, t.dataset.distance);
+        }),
+            elements_for_aao_cache.set(e, t));
+    }
+    return elements_for_aao_cache.get(e);
 }
 function get_elements_for_aao_key(e) {
     return elements_for_aao_key.get(e);
@@ -66319,6 +66319,8 @@ class XYVirtualScroller {
             (this.onRowHoverLeave = i.onRowHoverLeave || null),
             (this.onItemClick = i.onItemClick || null),
             (this.onScrollCallback = i.onScrollCallback || null),
+            (this.onInitCallback = i.onInitCallback || null),
+            (this.onRenderCallback = i.onRenderCallback || null),
             (this.template =
                 i.template || document.getElementById('item-template') || null),
             (this.items = t),
@@ -66369,8 +66371,11 @@ class XYVirtualScroller {
                     }));
             }),
             this.attachEvents(),
-            this.onScroll(),
-            (this.itemsUpdateTimeout = null));
+            requestAnimationFrame(() => {
+                this.onScroll();
+            }),
+            (this.itemsUpdateTimeout = null),
+            this.onInitCallback && this.onInitCallback());
     }
     attachEvents() {
         (this.content.addEventListener(
@@ -66474,7 +66479,8 @@ class XYVirtualScroller {
             (this.bottomSpacer.style.height = `${s}px`),
             requestAnimationFrame(() => {
                 this.updateHeights();
-            }));
+            }),
+            this.onRenderCallback && this.onRenderCallback());
     }
     buildItemNodeCached(e) {
         const t = this.items[e][this.cacheKey];
