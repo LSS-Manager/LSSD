@@ -43,7 +43,7 @@ jobs:
 
             - name: Run Download Script on Mexico
               env:
-                  GAME: https://centro-de-mando.mx
+                  GAME: https://centro-de-mando-americas.com
               run: |
                   yarn download
 
