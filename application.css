@@ -16237,38 +16237,43 @@ body.dark .dark-visible {
     flex-direction: column;
     min-height: 0;
 }
+.hospital-overview-virtual-table-header,
+.hospital-overview-desktop-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px;
+}
 .hospital-overview-virtual-table-header {
     flex: 0 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    column-gap: 15px;
-    padding: 8px;
     border-bottom: 2px solid #ddd;
     font-weight: bold;
 }
-.hospital-overview-extension-selected .hospital-overview-virtual-table-header {
-    grid-template-columns: 1fr auto auto;
+.hospital-overview-name-column {
+    flex: 0 0 25%;
+    min-width: 180px;
+}
+.hospital-overview-alliance-column {
+    flex: 0 0 150px;
+}
+.hospital-overview-patients-column {
+    flex: 1 1 160px;
 }
 .hospital-overview-actions-header,
 .hospital-overview-actions-cell {
     display: none;
+    flex: 0 0 190px;
 }
 .hospital-overview-extension-selected .hospital-overview-actions-header,
 .hospital-overview-extension-selected .hospital-overview-actions-cell {
     display: block;
 }
+.hospital-overview-status-column {
+    flex: 0 0 120px;
+}
 .hospital-overview-desktop-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    column-gap: 15px;
-    padding: 8px;
     border-bottom: 1px solid #ddd;
     background-color: #fff;
-}
-.hospital-overview-extension-selected .hospital-overview-desktop-row {
-    grid-template-columns: 1fr auto auto;
 }
 .hospital-overview-desktop-row:nth-child(even) {
     background-color: #f9f9f9;
@@ -16281,6 +16286,10 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
 }
 .hospital-overview-status-cell {
     text-align: right;
+}
+.hospital-overview-patient-icon-empty {
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
 .hospital-overview-boost-form {
     display: inline-block;
@@ -16307,7 +16316,8 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
 }
 .multiple-building-extensions-extension
     > .multiple-building-extensions-purchase-form {
-    width: 185px;
+    min-width: 185px;
+    width: fit-content;
 }
 .multiple-building-extensions-layout {
     display: flex;
@@ -16423,6 +16433,11 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
 .hospital-overview-mobile-card .hospital-overview-mobile-body {
     padding: 10px 15px;
 }
+.hospital-overview-mobile-card
+    .hospital-overview-mobile-actions
+    .hospital-overview-alliance-control {
+    margin-left: auto;
+}
 .hospital-overview-mobile-card .hospital-overview-mobile-status {
     display: flex;
     align-items: center;
@@ -16461,6 +16476,9 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
     .hospital-overview-footer-actions > .btn,
     .multiple-building-extensions-purchase-form {
         width: 48%;
+    }
+    .multiple-building-extensions-purchase-form .btn {
+        white-space: normal;
     }
 }
 .education_description_container {

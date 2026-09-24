@@ -7400,15 +7400,13 @@ function startMultipleBuildingExtensionsWorkerIfSupported(
 ) {
     const o = selectEncoding();
     if (!window.Worker) return !1;
-    if (multipleBuildingExtensionsWorker)
-        return multipleBuildingExtensionsWorker;
     const r = new Worker(e);
     return (
         (r.onmessage = function (e) {
-            onMultipleBuildingExtensionsWorkerMessage(e, s, a);
+            onMultipleBuildingExtensionsWorkerMessage(e, r, s, a);
         }),
         (r.onerror = function (e) {
-            onMultipleBuildingExtensionsWorkerError(e, a);
+            onMultipleBuildingExtensionsWorkerError(e, r, a);
         }),
         r.postMessage({
             encoding: o,
@@ -7424,20 +7422,14 @@ function startMultipleBuildingExtensionsWorkerIfSupported(
         r
     );
 }
-function onMultipleBuildingExtensionsWorkerMessage(e, t, i) {
-    const n = parseResponse(e.data);
-    ('response' === n.type &&
-        (t && 'function' == typeof t && t(n),
-        terminateMultipleBuildingExtensionsWorker()),
-        'error' === n.type && onMultipleBuildingExtensionsWorkerError(n, i));
+function onMultipleBuildingExtensionsWorkerMessage(e, t, i, n) {
+    const s = parseResponse(e.data);
+    ('response' === s.type &&
+        (i && 'function' == typeof i && i(s), terminateWorker(t)),
+        'error' === s.type && onMultipleBuildingExtensionsWorkerError(s, t, n));
 }
-function onMultipleBuildingExtensionsWorkerError(e, t) {
-    (t && 'function' == typeof t && t(e),
-        terminateMultipleBuildingExtensionsWorker());
-}
-function terminateMultipleBuildingExtensionsWorker() {
-    (terminateWorker(multipleBuildingExtensionsWorker),
-        (multipleBuildingExtensionsWorker = null));
+function onMultipleBuildingExtensionsWorkerError(e, t, i) {
+    (i && 'function' == typeof i && i(e), terminateWorker(t));
 }
 function terminateWorker(e) {
     e && (e.terminate(), (e = null));
@@ -47842,7 +47834,6 @@ let missionsWorker,
     poiWorker,
     vehicleGroupWorker,
     hospitalOverviewWorker,
-    multipleBuildingExtensionsWorker,
     vehiclesOnTheMoveLoadingTimer = !1,
     vehiclesOnTheMoveLoading = !1,
     beta_player = !1,
