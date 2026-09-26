@@ -7,6 +7,6 @@
     },
     "dependencies": {
         "jsdom": "30.0.1",
-        "prettier": "^3.9.6"
+        "prettier": "^3.9.8"
     }
 }
