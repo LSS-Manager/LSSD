@@ -48594,6 +48594,10 @@ $(function () {
                 'livestock_hoist',
                 I18n.t('intervention_order.vehicles.livestock_hoist'),
             ],
+            [
+                'wildfire_equipment',
+                I18n.t('intervention_order.vehicles.wildfire_equipment'),
+            ],
         ]),
         $('#restore_map').click(function () {
             mapViewRestore();
