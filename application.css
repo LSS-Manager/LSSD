@@ -14796,12 +14796,38 @@ body.bigMap .search-station-input {
     word-break: break-word;
     visibility: visible;
 }
+.tooltip-mc.tooltip-auto-width[data-tip]:after {
+    width: max-content;
+    max-width: 300px;
+    white-space: normal;
+    word-break: normal;
+    left: 0;
+}
 .tooltip-mc[data-tip]:hover:before,
 .tooltip-mc[data-tip]:hover:after {
     display: block;
 }
 .tooltip-mc:after {
     visibility: hidden;
+}
+.tooltip-mc.tooltip-right[data-tip]:before {
+    left: 100% !important;
+    margin-left: 5px;
+    top: 12px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #fff7d9;
+    border-left: none;
+    transform: none;
+}
+.tooltip-mc.tooltip-right[data-tip]:after {
+    left: 100% !important;
+    margin-left: 15px;
+    top: -6px;
+    transform: none;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    line-height: 1.4;
 }
 .background-flash {
     animation: background-flash 350ms ease-out;
