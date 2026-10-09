@@ -7668,6 +7668,7 @@ function calculateNavData(e, t, i) {
     );
 }
 function calculateNavDataForMission(e, t) {
+    console.log(`calculateNavDataForMission for ${e}: ${JSON.stringify(t)}`);
     let i = missions_data.values();
     return 0 === i.length ?
             { mission_id: e }
@@ -7714,13 +7715,13 @@ function filteredMissionsForNav(e, t) {
         s = t?.participation || [],
         a = [];
     (i.forEach(function (e) {
-        a = a.concat(missionTypeFilters[e]?.missionIds);
+        a = a.concat([...missionTypeFilters[e]?.missionIds]);
     }),
         n.forEach(function (e) {
-            a = a.concat(missionStateFilters[e]?.missionIds);
+            a = a.concat([...missionStateFilters[e]?.missionIds]);
         }),
         s.forEach(function (e) {
-            a = a.concat(missionParticipationFilters[e]?.missionIds);
+            a = a.concat([...missionParticipationFilters[e]?.missionIds]);
         }));
     let o = Array.from(e).filter(e => !e.alliance_mission_hide);
     return ((o = o.filter(e => !a.includes(e.id))), o);
