@@ -4743,6 +4743,9 @@ function updateMarkerFiltersSupport(e) {
 function openPOILightbox() {
     lightboxOpen('/pois');
 }
+function syncAppleGC(e) {
+    mobileBridgeAdd('sync_apple_gc', { payload: e });
+}
 function isBetaPlayer() {
     return !0 === beta_player;
 }
