@@ -11633,41 +11633,49 @@ h3#missionH1 {
     text-transform: uppercase;
     width: 95%;
 }
-th.tablesorter-header {
+th.tablesorter-header,
+.hospital-overview-sort-header {
     background-repeat: no-repeat;
     background-position: right center;
     cursor: pointer;
 }
-body.dark th.tablesorter-header {
+body.dark th.tablesorter-header,
+body.dark .hospital-overview-sort-header {
     background-position: center right;
 }
 th.sorter-false {
     background-image: none !important;
 }
-th.tablesorter-headerUnSorted {
+th.tablesorter-headerUnSorted,
+.hospital-overview-sort-header.tablesorter-headerUnSorted {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -10 70 70" fill="%323232FF" stroke="%323232FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="12 25 18 33 24 25"%3E%3C/polygon%3E%3Cpolygon points="12 23 18 15 24 23"%3E%3C/polygon%3E%3C/svg%3E');
     background-size: 40px 40px;
 }
-th.tablesorter-headerDesc {
+th.tablesorter-headerDesc,
+.hospital-overview-sort-header.tablesorter-headerDesc {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-0 -20 70 70" fill="%323232FF" stroke="%323232FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="36 15 42 9 48 15"%3E%3C/polygon%3E%3C/svg%3E');
     background-color: #f9f9f9;
     background-size: 40px 40px;
 }
-th.tablesorter-headerAsc {
+th.tablesorter-headerAsc,
+.hospital-overview-sort-header.tablesorter-headerAsc {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-0 -20 70 70" fill="%323232FF" stroke="%323232FF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="36 9 42 15 48 9"%3E%3C/polygon%3E%3C/svg%3E');
     background-color: #f9f9f9;
     background-size: 40px 40px;
 }
-body.dark th.tablesorter-headerUnSorted {
+body.dark th.tablesorter-headerUnSorted,
+body.dark .hospital-overview-sort-header.tablesorter-headerUnSorted {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -10 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="12 25 18 33 24 25"%3E%3C/polygon%3E%3Cpolygon points="12 23 18 15 24 23"%3E%3C/polygon%3E%3C/svg%3E');
     background-size: 40px 40px;
 }
-body.dark th.tablesorter-headerDesc {
+body.dark th.tablesorter-headerDesc,
+body.dark .hospital-overview-sort-header.tablesorter-headerDesc {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-0 -20 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="36 15 42 9 48 15"%3E%3C/polygon%3E%3C/svg%3E');
     background-color: #323232;
     background-size: 40px 40px;
 }
-body.dark th.tablesorter-headerAsc {
+body.dark th.tablesorter-headerAsc,
+body.dark .hospital-overview-sort-header.tablesorter-headerAsc {
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="-0 -20 70 70" fill="%23ffffff" stroke="%23ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="36 9 42 15 48 9"%3E%3C/polygon%3E%3C/svg%3E');
     background-color: #323232;
     background-size: 40px 40px;
@@ -16275,6 +16283,9 @@ body.dark .dark-visible {
     border-bottom: 2px solid #ddd;
     font-weight: bold;
 }
+.hospital-overview-sort-header {
+    padding-right: 20px;
+}
 .hospital-overview-name-column {
     flex: 0 0 25%;
     min-width: 180px;
@@ -16437,6 +16448,13 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
 .multiple-building-extensions-info {
     margin: 15px 0 10px;
 }
+.multiple-building-extensions-summary .label-danger {
+    background-color: #dc3545;
+}
+.multiple-building-extensions-summary .full-price {
+    text-decoration: line-through;
+    color: #b0b0b0;
+}
 .multiple-building-extensions-mobile {
     min-height: 0;
 }
@@ -16449,6 +16467,10 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
     flex: 1 1 auto;
     flex-direction: column;
     min-height: 0;
+}
+.multiple-building-extensions-mobile
+    .multiple-building-extensions-virtual-list {
+    min-height: 150px;
 }
 .hospital-overview-mobile-card .building_list_caption {
     margin-bottom: 0;
@@ -16486,6 +16508,7 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
     }
     .multiple-building-extensions-layout {
         flex-direction: column;
+        overflow-y: auto;
     }
     .multiple-building-extensions-controls {
         flex: 0 0 auto;
@@ -16496,6 +16519,9 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
         max-width: none;
         width: 100%;
     }
+    .multiple-building-extensions-panel {
+        min-height: 300px;
+    }
     .multiple-building-extensions-panel-body {
         padding: 10px;
     }
@@ -16505,6 +16531,14 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
     }
     .multiple-building-extensions-purchase-form .btn {
         white-space: normal;
+    }
+    .multiple-building-extensions-summary td {
+        display: block;
+    }
+    .multiple-building-extensions-summary .prices {
+        border-top: 0;
+        padding-top: 0;
+        text-align: left;
     }
 }
 .education_description_container {

@@ -48602,6 +48602,16 @@ $(function () {
                 'wildfire_equipment',
                 I18n.t('intervention_order.vehicles.wildfire_equipment'),
             ],
+            [
+                'gas_detector',
+                I18n.t('intervention_order.vehicles.gas_detector'),
+            ],
+            [
+                'mining_breathing_protection',
+                I18n.t(
+                    'intervention_order.vehicles.mining_breathing_protection'
+                ),
+            ],
         ]),
         $('#restore_map').click(function () {
             mapViewRestore();
