@@ -4514,6 +4514,14 @@ function openHelpshiftArticle(e, t) {
         mobileBridgeAdd('open_helpshift_article', { article_id: t })
     :   '' !== e && window.open(e, '_blank');
 }
+function getNativeLicenses() {
+    1 == mobile_bridge_use && mobileBridgeAdd('getNativeLicenses', {});
+}
+function getNativeLicenseText(e) {
+    1 == mobile_bridge_use &&
+        null != e &&
+        mobileBridgeAdd('getNativeLicenseText', { id: e });
+}
 function flashHighlightById(e) {
     var t = document.getElementById(e);
     (t.classList.add('background-flash'),
@@ -5507,7 +5515,9 @@ function vehicle_group_available(e, t) {
     return vehicle_group_available_new(e, t);
 }
 function vehicle_group_available_new(vehicle_group_id, calculate_time) {
-    const result = { vehicle_group_id: vehicle_group_id };
+    const result = {
+        vehicle_group_id: vehicle_group_id,
+    };
     let all_ok = !0,
         max_time = -1,
         vehicle_ids = eval(
