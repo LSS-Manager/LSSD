@@ -1307,14 +1307,16 @@ function processMissionElementFromWorker(e) {
             mobileBridgeAdd('mission', e));
 }
 function startPumpProgressBar(e) {
-    const t = $('#pumping_bar_' + e.id);
-    'undefined' != t.data('pumping_date_end') &&
-        startProgressBar({
-            $element: t,
-            missionValue: t.data('pumping_mission_value'),
-            startTime: t.data('pumping_date_start'),
-            endTime: t.data('pumping_date_end'),
-        });
+    registerMissionPumpingProgressTimer(
+        e.id,
+        {
+            $element: $('#pumping_bar_striper_' + e.id),
+            missionValue: e.pumping_mission_value,
+            startTime: 1e3 * e.pumping_date_start,
+            endTime: 1e3 * e.pumping_date_end,
+        },
+        1e3 * e.pumping_ended_at
+    );
 }
 function processMissionMarkersFromWorker(e) {
     let t,
@@ -1403,6 +1405,7 @@ function buildingRemove(e) {
             e => e.id !== t
         )),
         building_markers_params_cache_per_id.delete(t),
+        buildings_data.delete(t),
         !0 === mobile_bridge_use &&
             4 === mobile_version &&
             mobileBridgeAdd('building_remove', { id: t }),
@@ -2584,6 +2587,18 @@ function processVehicleGroupFromWorker(e) {
 }
 function showErrorOnVehicleGroupFromWorker() {
     window.showErrorInfo && showErrorInfo();
+}
+function getPlatformAdjustedVLCacheConfig() {
+    let e = JSON.parse(virtualListCacheConfig),
+        t = CACHE_PRESETS.aggressive;
+    return (
+        mobile_bridge_use &&
+            ((t = CACHE_PRESETS.balanced),
+            isIOS() && (t = CACHE_PRESETS.balanced)),
+        (e.dom = t.dom),
+        (e.html = t.html),
+        e
+    );
 }
 function check_and_enable_apng_support() {
     'use strict';
@@ -3847,10 +3862,13 @@ function mobileShow(e) {
     const t = $('#level_upgrade_hint_holder');
     t.length > 0 && t.show();
     let i = $(window).height();
-    ('map' == e && mobile_use_web_map ?
-        ((i += magicValueAvailableSpace), $('#main_navbar').hide())
-    :   ((i -= magicValueAvailableSpace), $('#main_navbar').show()),
-        'account' != e ?
+    if (
+        ('map' == e && mobile_use_web_map ?
+            ((i += magicValueAvailableSpace), $('#main_navbar').hide())
+        :   ((i -= magicValueAvailableSpace), $('#main_navbar').show()),
+        'account' != e)
+    ) {
+        if (
             ($('.overview_outer').hide(),
             $('#' + e + '_outer').show(),
             $('.mobile-navbar-selector')
@@ -3874,30 +3892,33 @@ function mobileShow(e) {
                         .width($(window).width())
                         .removeClass('col-sm-12')),
                 'undefined' == typeof mapkit && map.invalidateSize()),
-            'missions' == e &&
-                ($('#missions-panel-body').height(
-                    i - $('.missions-panel-head').outerHeight(!0) - 5
-                ),
-                $('#missions').height('auto')),
-            'buildings' == e &&
-                ($('#building_panel_body').css('max-height', 'initial'),
+            'missions' == e)
+        ) {
+            const e = i - $('.missions-panel-head').outerHeight(!0) - 5;
+            ($('#missions-panel-body').height(e),
+                $('#missions').height('auto'),
+                betaOptions?.missions_vl && refreshMissionsVLHeight(e));
+        }
+        if ('buildings' == e) {
+            const e = i - $('#building_panel_heading').outerHeight(!0) - 50;
+            ($('#building_panel_body').css('max-height', 'initial'),
                 $('#building_panel_body').css('padding-bottom', '15px'),
-                $('#building_panel_body').height(
-                    i - $('#building_panel_heading').outerHeight(!0) - 50
-                )),
-            'chat' == e &&
-                ($('#chat_panel_body').css('max-height', 'initial'),
-                $('#chat_panel_body').css('padding-bottom', '15px'),
-                $('#chat_panel_body').height(
-                    i - $('#chat_panel_heading').outerHeight(!0) - 50
-                )),
+                $('#building_panel_body').height(e),
+                betaOptions?.missions_vl && refreshBuildingsVLHeight(e));
+        }
+        ('chat' == e &&
+            ($('#chat_panel_body').css('max-height', 'initial'),
+            $('#chat_panel_body').css('padding-bottom', '15px'),
+            $('#chat_panel_body').height(
+                i - $('#chat_panel_heading').outerHeight(!0) - 50
+            )),
             'radio' == e &&
                 ($('#radio_panel_body').css('max-height', 'initial'),
                 $('#radio_panel_body').css('padding-bottom', '15px'),
                 $('#radio_panel_body').height(
                     i - $('#radio_panel_heading').outerHeight(!0) - 50
-                )))
-        :   mobileBridgeAdd('account_show', {}));
+                )));
+    } else mobileBridgeAdd('account_show', {});
 }
 function startBuildingCreation() {
     $('#build_new_building').click();
@@ -4093,6 +4114,11 @@ function bigMapWindowSizeChanged() {
     if ($('body').hasClass('bigMap')) {
         var e = parseInt($('#missions_outer').height());
         ((e = e - parseInt($('.missions-panel-head').height()) - 15),
+            betaOptions.missions_vl &&
+                (e =
+                    e -
+                    parseInt($('#missions-panel-footer').height() || 0) -
+                    30),
             $('#missions-panel-body').css('height', e + 'px'),
             betaOptions.missions_vl && refreshMissionsVLHeight(e),
             (e =
@@ -5515,9 +5541,7 @@ function vehicle_group_available(e, t) {
     return vehicle_group_available_new(e, t);
 }
 function vehicle_group_available_new(vehicle_group_id, calculate_time) {
-    const result = {
-        vehicle_group_id: vehicle_group_id,
-    };
+    const result = { vehicle_group_id: vehicle_group_id };
     let all_ok = !0,
         max_time = -1,
         vehicle_ids = eval(
@@ -7148,9 +7172,94 @@ function renderInBatches(e, t, i = 100, n) {
     const o = t.length;
     s();
 }
+function parseUserAgent(e = navigator.userAgent) {
+    const t = {
+            browser: null,
+            browserVersion: null,
+            engine: null,
+            engineVersion: null,
+            os: null,
+            osVersion: null,
+            webView: !1,
+            webViewKind: null,
+            mobile: /Mobi|Android/i.test(e),
+        },
+        i = [
+            ['Edge', /Edg(?:e|A|iOS)?\/([\d.]+)/],
+            ['Opera', /(?:OPR|Opera)\/([\d.]+)/],
+            ['Samsung Internet', /SamsungBrowser\/([\d.]+)/],
+            ['Firefox', /(?:Firefox|FxiOS)\/([\d.]+)/],
+            ['Chrome', /(?:Chrome|CriOS)\/([\d.]+)/],
+            ['Safari', /Version\/([\d.]+).*Safari/],
+        ];
+    for (const [n, s] of i) {
+        const i = e.match(s);
+        if (i) {
+            ((t.browser = n), (t.browserVersion = i[1]));
+            break;
+        }
+    }
+    /Firefox\//.test(e) ?
+        ((t.engine = 'Gecko'),
+        (t.engineVersion = (e.match(/rv:([\d.]+)/) || [])[1] || null))
+    : /AppleWebKit\//.test(e) ?
+        ((t.engine = 'WebKit'),
+        (t.engineVersion = (e.match(/AppleWebKit\/([\d.]+)/) || [])[1] || null))
+    :   /Trident\//.test(e) &&
+        ((t.engine = 'Trident'),
+        (t.engineVersion = (e.match(/Trident\/([\d.]+)/) || [])[1] || null));
+    const n = [
+        [
+            'Windows',
+            /Windows NT ([\d.]+)/,
+            { '10.0': '10 or 11', '6.3': '8.1', '6.2': '8', '6.1': '7' },
+        ],
+        ['macOS', /Mac OS X ([\d_.]+)/],
+        ['Android', /Android ([\d.]+)/],
+        ['iOS', /(?:iPhone|iPad|iPod).*OS ([\d_]+)/],
+    ];
+    for (const [i, s, a] of n) {
+        const n = e.match(s);
+        if (n) {
+            t.os = i;
+            let e = n[1].replace(/_/g, '.');
+            (a && a[e] && (e = a[e]), (t.osVersion = e));
+            break;
+        }
+    }
+    return (
+        /; wv\)/.test(e) ?
+            ((t.webView = !0), (t.webViewKind = 'Android WebView'))
+        :   /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/.test(e) &&
+            ((t.webView = !0), (t.webViewKind = 'iOS WebView')),
+        t
+    );
+}
 function getDeviceDetails() {
-    let e = {};
-    return JSON.stringify(e);
+    try {
+        const e = {
+                worker: 'function' == typeof Worker,
+                secureContext: Boolean(window.isSecureContext),
+                userAgent: navigator.userAgent,
+                vendor: navigator.vendor || null,
+            },
+            t = parseUserAgent();
+        Object.assign(e, t);
+        const i = navigator.userAgentData;
+        if (i) {
+            ((e.mobile = Boolean(i.mobile)), (e.os = i.platform || e.os));
+            const t = (i.brands || [])
+                .filter(e => !/Not.?A.?Brand/i.test(e.brand))
+                .sort((e, t) =>
+                    t.version.localeCompare(e.version, void 0, { numeric: !0 })
+                )[0];
+            t && ((e.browser = t.brand), (e.browserVersion = t.version));
+        }
+        return e;
+    } catch (e) {
+        console.warn(`Detected device details: ${e}`);
+    }
+    return null;
 }
 function compareMultiple(e, t) {
     const i = [e].flat(),
@@ -7205,7 +7314,7 @@ function startMissionsWorkerIfSupported(e, t, i, n, s = {}) {
                 mixed_mobile_desktop_mode: mixed_mobile_desktop_mode,
                 mobile_version: mobile_version,
                 useMissionScrollBarOptimization:
-                    useMissionScrollBarOptimization,
+                    useMissionScrollBarOptimization && !betaOptions.missions_vl,
                 missionFilterQueryParams: missionFilterQueryParams,
                 locale: I18n.locale,
                 defaultLocale: I18n.defaultLocale,
@@ -8386,6 +8495,7 @@ function updateMissionPatientsData(e) {
 function updateMissionPatient(e) {
     if (!e) return;
     if (!missions_data.has(e.mission_id)) return;
+    patientTimerDelete(e.id);
     const t = missions_data.get(e.mission_id);
     let i = t.patients_prisoners || {},
         n = i.patients || [],
@@ -11118,12 +11228,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 return new e.XMLHttpRequest();
             } catch (e) {}
         }
-        function R() {
+        function O() {
             try {
                 return new e.ActiveXObject('Microsoft.XMLHTTP');
             } catch (e) {}
         }
-        function O() {
+        function R() {
             return (
                 setTimeout(function () {
                     Yt = t;
@@ -11150,7 +11260,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 l = function () {
                     if (s) return !1;
                     for (
-                        var t = Yt || O(),
+                        var t = Yt || R(),
                             i = Math.max(0, c.startTime + c.duration - t),
                             n = 1 - (i / c.duration || 0),
                             a = 0,
@@ -11170,7 +11280,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     opts: ue.extend(!0, { specialEasing: {} }, i),
                     originalProperties: t,
                     originalOptions: i,
-                    startTime: Yt || O(),
+                    startTime: Yt || R(),
                     duration: i.duration,
                     tweens: [],
                     createTween: function (t, i) {
@@ -11875,7 +11985,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     )
                         return i;
                     if (1 !== (r = (t = t || L).nodeType) && 9 !== r) return [];
-                    if (O && !n) {
+                    if (R && !n) {
                         if ((s = xe.exec(e)))
                             if ((o = s[1])) {
                                 if (9 === r) {
@@ -12330,7 +12440,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             'ID' === (o = a[0]).type &&
                             A.getById &&
                             9 === t.nodeType &&
-                            O &&
+                            R &&
                             E.relative[a[1].type]
                         ) {
                             if (
@@ -12358,7 +12468,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 break;
                             }
                     }
-                    return (I(e, c)(n, t, !O, i, ge.test(e)), i);
+                    return (I(e, c)(n, t, !R, i, ge.test(e)), i);
                 }
                 function C() {}
                 var S,
@@ -12372,8 +12482,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     j,
                     B,
                     L,
-                    R,
                     O,
+                    R,
                     F,
                     N,
                     H,
@@ -12526,8 +12636,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 t !== L && 9 === t.nodeType && t.documentElement
                             ) ?
                                 ((L = t),
-                                (R = t.documentElement),
-                                (O = !P(t)),
+                                (O = t.documentElement),
+                                (R = !P(t)),
                                 (A.attributes = o(function (e) {
                                     return (
                                         (e.innerHTML = "<a href='#'></a>"),
@@ -12574,7 +12684,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 })),
                                 (A.getById = o(function (e) {
                                     return (
-                                        (R.appendChild(e).id = W),
+                                        (O.appendChild(e).id = W),
                                         !t.getElementsByName ||
                                             !t.getElementsByName(W).length
                                     );
@@ -12583,7 +12693,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     ((E.find.ID = function (e, t) {
                                         if (
                                             typeof t.getElementById !== Q &&
-                                            O
+                                            R
                                         ) {
                                             var i = t.getElementById(e);
                                             return i && i.parentNode ? [i] : [];
@@ -12636,7 +12746,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         if (
                                             typeof t.getElementsByClassName !==
                                                 Q &&
-                                            O
+                                            R
                                         )
                                             return t.getElementsByClassName(e);
                                     }),
@@ -12679,10 +12789,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     })),
                                 (A.matchesSelector = n(
                                     (H =
-                                        R.webkitMatchesSelector ||
-                                        R.mozMatchesSelector ||
-                                        R.oMatchesSelector ||
-                                        R.msMatchesSelector)
+                                        O.webkitMatchesSelector ||
+                                        O.mozMatchesSelector ||
+                                        O.oMatchesSelector ||
+                                        O.msMatchesSelector)
                                 )) &&
                                     o(function (e) {
                                         ((A.disconnectedMatch = H.call(
@@ -12695,7 +12805,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 (F = F.length && new RegExp(F.join('|'))),
                                 (N = N.length && new RegExp(N.join('|'))),
                                 (q =
-                                    n(R.contains) || R.compareDocumentPosition ?
+                                    n(O.contains) || O.compareDocumentPosition ?
                                         function (e, t) {
                                             var i =
                                                     9 === e.nodeType ?
@@ -12732,7 +12842,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     );
                                 })),
                                 (J =
-                                    R.compareDocumentPosition ?
+                                    O.compareDocumentPosition ?
                                         function (e, i) {
                                             if (e === i) return ((Y = !0), 0);
                                             var n =
@@ -12803,7 +12913,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         ((e.ownerDocument || e) !== L && B(e),
                         (t = t.replace(ve, "='$1']")),
                         A.matchesSelector &&
-                            O &&
+                            R &&
                             (!N || !N.test(t)) &&
                             (!F || !F.test(t)))
                     )
@@ -12826,11 +12936,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     var n = E.attrHandle[i.toLowerCase()],
                         s =
                             n && ee.call(E.attrHandle, i.toLowerCase()) ?
-                                n(e, i, !O)
+                                n(e, i, !R)
                             :   t;
                     return (
                         s === t ?
-                            A.attributes || !O ? e.getAttribute(i)
+                            A.attributes || !R ? e.getAttribute(i)
                             : (s = e.getAttributeNode(i)) && s.specified ?
                                 s.value
                             :   null
@@ -13199,7 +13309,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         do {
                                             if (
                                                 (i =
-                                                    O ?
+                                                    R ?
                                                         t.lang
                                                     :   t.getAttribute(
                                                             'xml:lang'
@@ -13224,7 +13334,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 return i && i.slice(1) === t.id;
                             },
                             root: function (e) {
-                                return e === R;
+                                return e === O;
                             },
                             focus: function (e) {
                                 return (
@@ -14397,8 +14507,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 :   e.value;
                         }));
             }));
-        var Re = /^(?:input|select|textarea)$/i,
-            Oe = /^key/,
+        var Oe = /^(?:input|select|textarea)$/i,
+            Re = /^key/,
             Fe = /^(?:mouse|contextmenu)|click/,
             Ne = /^(?:focusinfocus|focusoutblur)$/,
             He = /^([^.]*)(?:\.(.+)|)$/;
@@ -14706,7 +14816,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     o ||
                         (this.fixHooks[s] = o =
                             Fe.test(s) ? this.mouseHooks
-                                : Oe.test(s) ? this.keyHooks
+                                : Re.test(s) ? this.keyHooks
                                 : {}),
                         n = o.props ? this.props.concat(o.props) : this.props,
                         e = new ue.Event(a),
@@ -14957,7 +15067,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
             ue.support.changeBubbles ||
                 (ue.event.special.change = {
                     setup: function () {
-                        if (Re.test(this.nodeName))
+                        if (Oe.test(this.nodeName))
                             return (
                                 ('checkbox' !== this.type &&
                                     'radio' !== this.type) ||
@@ -14992,7 +15102,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             'beforeactivate._change',
                             function (e) {
                                 var t = e.target;
-                                Re.test(t.nodeName) &&
+                                Oe.test(t.nodeName) &&
                                     !ue._data(t, 'changeBubbles') &&
                                     (ue.event.add(
                                         t,
@@ -15026,7 +15136,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     teardown: function () {
                         return (
                             ue.event.remove(this, '._change'),
-                            !Re.test(this.nodeName)
+                            !Oe.test(this.nodeName)
                         );
                     },
                 }),
@@ -16256,8 +16366,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
             jt = /([?&])_=[^&]*/,
             Bt = /^(.*?):[ \t]*([^\r\n]*)\r?$/gm,
             Lt = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-            Rt = /^(?:GET|HEAD)$/,
-            Ot = /^\/\//,
+            Ot = /^(?:GET|HEAD)$/,
+            Rt = /^\/\//,
             Ft = /^([\w.+-]+:)(?:\/\/([^\/?#:]*)(?::(\d+)|)|)/,
             Nt = ue.fn.load,
             Ht = {},
@@ -16480,7 +16590,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         (k.error = k.fail),
                         (h.url = ((e || h.url || Mt) + '')
                             .replace(Dt, '')
-                            .replace(Ot, Et[1] + '//')),
+                            .replace(Rt, Et[1] + '//')),
                         (h.type = i.method || i.type || h.method || h.type),
                         (h.dataTypes = ue
                             .trim(h.dataType || '*')
@@ -16509,7 +16619,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         0 === ue.active++ &&
                         ue.event.trigger('ajaxStart'),
                     (h.type = h.type.toUpperCase()),
-                    (h.hasContent = !Rt.test(h.type)),
+                    (h.hasContent = !Ot.test(h.type)),
                     (o = h.url),
                     h.hasContent ||
                         (h.data &&
@@ -16707,7 +16817,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         ((ue.ajaxSettings.xhr =
             e.ActiveXObject ?
                 function () {
-                    return (!this.isLocal && L()) || R();
+                    return (!this.isLocal && L()) || O();
                 }
             :   L),
             (Gt = ue.ajaxSettings.xhr()),
@@ -26003,8 +26113,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         j,
                         B,
                         L,
-                        R,
                         O,
+                        R,
                         F,
                         N = new Date(),
                         H = this._daylightSavingAdjust(
@@ -26270,7 +26380,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                     w < 7;
                                     w++
                                 )
-                                    ((R =
+                                    ((O =
                                         f ?
                                             f.apply(
                                                 e.input ? e.input[0] : null,
@@ -26278,8 +26388,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             )
                                         :   [!0, '']),
                                         (F =
-                                            ((O = j.getMonth() !== X) && !v) ||
-                                            !R[0] ||
+                                            ((R = j.getMonth() !== X) && !v) ||
+                                            !O[0] ||
                                             (J && j < J) ||
                                             (Q && j > Q)),
                                         (L +=
@@ -26287,7 +26397,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                             ((w + u + 6) % 7 >= 5 ?
                                                 ' ui-datepicker-week-end'
                                             :   '') +
-                                            (O ?
+                                            (R ?
                                                 ' ui-datepicker-other-month'
                                             :   '') +
                                             ((
@@ -26304,9 +26414,9 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 this._unselectableClass +
                                                 ' ui-state-disabled'
                                             :   '') +
-                                            (O && !g ? '' : (
+                                            (R && !g ? '' : (
                                                 ' ' +
-                                                R[1] +
+                                                O[1] +
                                                 (j.getTime() === Y.getTime() ?
                                                     ' ' + this._currentClass
                                                 :   '') +
@@ -26315,10 +26425,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 :   '')
                                             )) +
                                             "'" +
-                                            ((O && !g) || !R[2] ?
+                                            ((R && !g) || !O[2] ?
                                                 ''
                                             :   " title='" +
-                                                R[2].replace(/'/g, '&#39;') +
+                                                O[2].replace(/'/g, '&#39;') +
                                                 "'") +
                                             (F ? '' : (
                                                 " data-handler='selectDay' data-event='click' data-month='" +
@@ -26328,7 +26438,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 "'"
                                             )) +
                                             '>' +
-                                            (O && !g ? '&#xa0;'
+                                            (R && !g ? '&#xa0;'
                                             : F ?
                                                 "<span class='ui-state-default'>" +
                                                 j.getDate() +
@@ -26340,7 +26450,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                                 (j.getTime() === Y.getTime() ?
                                                     ' ui-state-active'
                                                 :   '') +
-                                                (O ?
+                                                (R ?
                                                     ' ui-priority-secondary'
                                                 :   '') +
                                                 "' href='#'>" +
@@ -36756,8 +36866,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     ii ||
                     (document.addEventListener(Kt, j, !0),
                     document.addEventListener(Yt, B, !0),
-                    document.addEventListener(Jt, R, !0),
-                    document.addEventListener(Qt, R, !0),
+                    document.addEventListener(Jt, O, !0),
+                    document.addEventListener(Qt, O, !0),
                     (ii = !0)),
                 ei[t] ?
                     ((i = ei[t].bind(this, i)),
@@ -36772,10 +36882,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
         function B(e) {
             ti[e.pointerId] && (ti[e.pointerId] = e);
         }
-        function R(e) {
+        function O(e) {
             delete ti[e.pointerId];
         }
-        function O(e, t) {
+        function R(e, t) {
             if (t.pointerType !== (t.MSPOINTER_TYPE_MOUSE || 'mouse')) {
                 for (var i in ((t.touches = []), ti)) t.touches.push(ti[i]);
                 ((t.changedTouches = [t]), e(t));
@@ -37359,14 +37469,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 r = o ? o.coordinates : null,
                 l = [],
                 c = t && t.pointToLayer,
-                u = (t && t.coordsToLatLng) || Oe;
+                u = (t && t.coordsToLatLng) || Re;
             if (!r && !o) return null;
             switch (o.type) {
                 case 'Point':
-                    return Re(c, e, (i = u(r)), t);
+                    return Oe(c, e, (i = u(r)), t);
                 case 'MultiPoint':
                     for (s = 0, a = r.length; s < a; s++)
-                        ((i = u(r[s])), l.push(Re(c, e, i, t)));
+                        ((i = u(r[s])), l.push(Oe(c, e, i, t)));
                     return new ki(l);
                 case 'LineString':
                 case 'MultiLineString':
@@ -37403,15 +37513,15 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     throw new Error('Invalid GeoJSON object.');
             }
         }
-        function Re(e, t, i, n) {
+        function Oe(e, t, i, n) {
             return e ? e(t, i) : new Si(i, n && n.markersInheritOptions && n);
         }
-        function Oe(e) {
+        function Re(e) {
             return new S(e[1], e[0], e[2]);
         }
         function Fe(e, t, i) {
             for (var n, s = [], a = 0, o = e.length; a < o; a++)
-                ((n = t ? Fe(e[a], t - 1, i) : (i || Oe)(e[a])), s.push(n));
+                ((n = t ? Fe(e[a], t - 1, i) : (i || Re)(e[a])), s.push(n));
             return s;
         }
         function Ne(e, t) {
@@ -38227,10 +38337,10 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 !window.L_DISABLE_3D && (It || Dt || gt) && !Mt && !Et),
             Bt = (Ki = 'undefined' != typeof orientation || I('mobile')) && wt,
             Lt = Ki && Dt,
-            Rt = !window.PointerEvent && window.MSPointerEvent,
-            Ot = !(!window.PointerEvent && !Rt),
+            Ot = !window.PointerEvent && window.MSPointerEvent,
+            Rt = !(!window.PointerEvent && !Ot),
             Ft = 'ontouchstart' in window || !!window.TouchEvent,
-            Nt = !window.L_NO_TOUCH && (Ft || Ot),
+            Nt = !window.L_NO_TOUCH && (Ft || Rt),
             Ht = Ki && Ct,
             qt = Ki && At,
             Wt =
@@ -38283,8 +38393,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 mobile: Ki,
                 mobileWebkit: Bt,
                 mobileWebkit3d: Lt,
-                msPointer: Rt,
-                pointer: Ot,
+                msPointer: Ot,
+                pointer: Rt,
                 touch: Nt,
                 touchNative: Ft,
                 mobileOpera: Ht,
@@ -38328,11 +38438,11 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     (t.MSPOINTER_TYPE_TOUCH &&
                         t.pointerType === t.MSPOINTER_TYPE_TOUCH &&
                         ge(t),
-                        O(e, t));
+                        R(e, t));
                 },
-                touchmove: O,
-                touchend: O,
-                touchcancel: O,
+                touchmove: R,
+                touchend: R,
+                touchcancel: R,
             },
             ti = {},
             ii = !1,
@@ -42285,7 +42395,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return [0, 0];
                 },
             }),
-            Ri =
+            Oi =
                 (hi.include({
                     _initOverlay: function (e, t, i, n) {
                         var s = t;
@@ -42500,12 +42610,12 @@ function identifyDefaultOrderBasedOnTarge(e) {
                         );
                     },
                 })),
-            Oi =
+            Ri =
                 (hi.mergeOptions({ closePopupOnClick: !0 }),
                 hi.include({
                     openPopup: function (e, t, i) {
                         return (
-                            this._initOverlay(Ri, e, t, i).openOn(this),
+                            this._initOverlay(Oi, e, t, i).openOn(this),
                             this
                         );
                     },
@@ -42521,7 +42631,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     bindPopup: function (e, t) {
                         return (
                             (this._popup = this._initOverlay(
-                                Ri,
+                                Oi,
                                 this._popup,
                                 e,
                                 t
@@ -42715,7 +42825,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (hi.include({
                     openTooltip: function (e, t, i) {
                         return (
-                            this._initOverlay(Oi, e, t, i).openOn(this),
+                            this._initOverlay(Ri, e, t, i).openOn(this),
                             this
                         );
                     },
@@ -42730,7 +42840,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 this.isTooltipOpen() &&
                                 this.unbindTooltip(),
                             (this._tooltip = this._initOverlay(
-                                Oi,
+                                Ri,
                                 this._tooltip,
                                 e,
                                 t
@@ -44367,7 +44477,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
         ((Gi.create = Ui),
             (Gi.pointsToPath = P),
             (Ii.geometryToLayer = Le),
-            (Ii.coordsToLatLng = Oe),
+            (Ii.coordsToLatLng = Re),
             (Ii.coordsToLatLngs = Fe),
             (Ii.latLngToCoords = Ne),
             (Ii.latLngsToCoords = He),
@@ -44920,7 +45030,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                         )));
                         },
                     }))),
-                (Rt =
+                (Ot =
                     (hi.addInitHook('addHandler', 'scrollWheelZoom', Lt),
                     hi.mergeOptions({
                         tapHold: Zt.touchNative && Zt.safari && Zt.mobile,
@@ -45021,8 +45131,8 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 t.target.dispatchEvent(e));
                         },
                     }))),
-                (Ot =
-                    (hi.addInitHook('addHandler', 'tapHold', Rt),
+                (Rt =
+                    (hi.addInitHook('addHandler', 'tapHold', Ot),
                     hi.mergeOptions({
                         touchZoom: Zt.touch,
                         bounceAtZoomLimits: !0,
@@ -45184,14 +45294,14 @@ function identifyDefaultOrderBasedOnTarge(e) {
                             :   (this._zooming = !1);
                         },
                     }))),
-                hi.addInitHook('addHandler', 'touchZoom', Ot),
+                hi.addInitHook('addHandler', 'touchZoom', Rt),
                 (hi.BoxZoom = gt),
                 (hi.DoubleClickZoom = jt),
                 (hi.Drag = Ki),
                 (hi.Keyboard = Bt),
                 (hi.ScrollWheelZoom = Lt),
-                (hi.TapHold = Rt),
-                (hi.TouchZoom = Ot),
+                (hi.TapHold = Ot),
+                (hi.TouchZoom = Rt),
                 (e.Bounds = k),
                 (e.Browser = Zt),
                 (e.CRS = ot),
@@ -45225,7 +45335,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (e.PolyUtil = kt),
                 (e.Polygon = Pi),
                 (e.Polyline = Mi),
-                (e.Popup = Ri),
+                (e.Popup = Oi),
                 (e.PosAnimation = di),
                 (e.Projection = St),
                 (e.Rectangle = Zi),
@@ -45233,7 +45343,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 (e.SVG = Gi),
                 (e.SVGOverlay = Bi),
                 (e.TileLayer = Hi),
-                (e.Tooltip = Oi),
+                (e.Tooltip = Ri),
                 (e.Transformation = z),
                 (e.Util = it),
                 (e.VideoOverlay = ji),
@@ -45284,7 +45394,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                     return new Mi(e, t);
                 }),
                 (e.popup = function (e, t) {
-                    return new Ri(e, t);
+                    return new Oi(e, t);
                 }),
                 (e.rectangle = function (e, t) {
                     return new Zi(e, t);
@@ -45297,7 +45407,7 @@ function identifyDefaultOrderBasedOnTarge(e) {
                 }),
                 (e.tileLayer = Ve),
                 (e.tooltip = function (e, t) {
-                    return new Oi(e, t);
+                    return new Ri(e, t);
                 }),
                 (e.transformation = E),
                 (e.version = '1.9.4'),
@@ -47929,7 +48039,7 @@ const CACHE_PRESETS = {
             },
         },
     },
-    virtualListCacheConfig = {
+    virtualListCacheConfig = JSON.stringify({
         enabled: !0,
         dom: {
             enabled: !0,
@@ -47956,7 +48066,7 @@ const CACHE_PRESETS = {
             clearDatasetKeys: [],
             onBeforeDomEvict: null,
         },
-    };
+    });
 $(function () {
     function onCoinsTop() {
         return !mobile_bridge_use || (mobileBridgeAdd('coins_window', {}), !1);
@@ -48778,7 +48888,8 @@ $(function () {
             'mouseenter',
             '.building_list_vehicle_element',
             function () {
-                hide_all_except_vehicle($(this).attr('vehicle_id'));
+                var e = $(this).attr('vehicle_id');
+                vehicle_hide_redraw_debounce(e);
             }
         ),
         $('body').on(
@@ -48789,11 +48900,10 @@ $(function () {
             }
         ),
         $('body').on('mouseenter', '.missionSideBarEntry', function () {
-            hide_all_except_mission(
-                $(this).attr('mission_id'),
-                $(this).attr('target_latitude'),
-                $(this).attr('target_longitude')
-            );
+            const e = $(this).attr('mission_id'),
+                t = $(this).attr('target_latitude'),
+                i = $(this).attr('target_longitude');
+            mission_hide_redraw_debounce(e, t, i);
         }),
         $('body').on('mouseleave', '.missionSideBarEntry', function () {
             show_hidden_markers();
@@ -48970,7 +49080,9 @@ var mapKitFactoryVehicleAnnotation = function (e, t) {
     var i = document.createElement('img');
     return ((i.src = t.url[1]), i);
 };
-const building_maps_redraw_debounce = debounce(building_maps_redraw, 250),
+const mission_hide_redraw_debounce = debounce(hide_all_except_mission, 50),
+    vehicle_hide_redraw_debounce = debounce(hide_all_except_vehicle, 50),
+    building_maps_redraw_debounce = debounce(building_maps_redraw, 250),
     building_load_alliance_debounce = debounce(building_load_alliance, 150);
 Date.now ||
     (Date.now = function () {
@@ -53806,10 +53918,10 @@ if ('undefined' == typeof jQuery)
                 e = a;
             }
         }
-        function R(e, t, i, n) {
+        function O(e, t, i, n) {
             L(e, t, i, n, !0);
         }
-        function O(e, t) {
+        function R(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild;) d(i, n.firstChild);
@@ -54017,7 +54129,7 @@ if ('undefined' == typeof jQuery)
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = O(n)),
+                i && (n = R(n)),
                 n
             );
         }
@@ -54126,7 +54238,7 @@ if ('undefined' == typeof jQuery)
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = O(e)))
+                            (t && (e += l.selectedHtml() + t), (u = R(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -54419,7 +54531,7 @@ if ('undefined' == typeof jQuery)
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = O(t[c], n),
+                                        h = R(t[c], n),
                                         p = l.substr(d + c.length);
                                     (h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -54457,7 +54569,7 @@ if ('undefined' == typeof jQuery)
                 S,
                 B,
                 L,
-                O,
+                R,
                 W,
                 V,
                 U,
@@ -54660,7 +54772,7 @@ if ('undefined' == typeof jQuery)
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            O = null;
+                            R = null;
                         }),
                         p(o, 'selectionchanged', at),
                         p(o, 'selectionchanged', tt),
@@ -54854,7 +54966,7 @@ if ('undefined' == typeof jQuery)
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
-                                    !Re &&
+                                    !Oe &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
@@ -54955,7 +55067,7 @@ if ('undefined' == typeof jQuery)
                     if (Y) {
                         (Y.destroy(),
                             (Z = null),
-                            (O = null),
+                            (R = null),
                             (Y = null),
                             L && u(L),
                             m(Be, 'click', Xe));
@@ -55036,7 +55148,7 @@ if ('undefined' == typeof jQuery)
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < o.length; l++) {
-                            if (je.FileReader && r && Oe.test(r[l].type))
+                            if (je.FileReader && r && Re.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             a[o[l]] = n.getData(o[l]);
                         }
@@ -55240,7 +55352,7 @@ if ('undefined' == typeof jQuery)
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (O = null),
+                        (R = null),
                         b(B),
                         b(f),
                         M(o, 'wysiwygMode', e),
@@ -55271,7 +55383,7 @@ if ('undefined' == typeof jQuery)
                             ));
                 }),
                 (Ee = function () {
-                    Le && (O = Z.selectedRange());
+                    Le && (R = Z.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -55374,9 +55486,9 @@ if ('undefined' == typeof jQuery)
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && F(Q))
                     ) {
-                        O = null;
+                        R = null;
                         var t = r('br', {}, S);
-                        if ((Z.insertNode(t), !Re)) {
+                        if ((Z.insertNode(t), !Oe)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             (n &&
@@ -55392,7 +55504,7 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (nt = function () {
-                    R(T, function (e) {
+                    O(T, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -55402,7 +55514,7 @@ if ('undefined' == typeof jQuery)
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Re ? '' : '<br />'),
+                                (t.innerHTML = Oe ? '' : '<br />'),
                                 d(T, t),
                                 !1
                             );
@@ -55418,7 +55530,7 @@ if ('undefined' == typeof jQuery)
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    (_t.closeDropDown(), (O = null));
+                    (_t.closeDropDown(), (R = null));
                 }),
                 (_t._ = function () {
                     var e,
@@ -55475,7 +55587,7 @@ if ('undefined' == typeof jQuery)
                         var n,
                             s = Z.selectedRange();
                         (ee || ot(),
-                            !Re &&
+                            !Oe &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -55487,7 +55599,7 @@ if ('undefined' == typeof jQuery)
                                 Z.selectRange(s)),
                             x.focus(),
                             T.focus(),
-                            O && (Z.selectRange(O), (O = null)));
+                            R && (Z.selectRange(R), (R = null)));
                     }
                     return (tt(), _t);
                 }),
@@ -55732,7 +55844,7 @@ if ('undefined' == typeof jQuery)
                             k(e, 'body') ||
                             (Z.saveRange(),
                             (e.className = ''),
-                            (O = null),
+                            (R = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || N(e, 'p'),
                             Z.restoreRange()),
@@ -56047,7 +56159,7 @@ if ('undefined' == typeof jQuery)
                                     (s += '</div>'));
                             }),
                             (a._htmlCache = s)),
-                            d(n, O(a._htmlCache)),
+                            d(n, R(a._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 (i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -56646,8 +56758,8 @@ if ('undefined' == typeof jQuery)
             je = window,
             Be = document,
             Le = xe,
-            Re = Le && Le < 11,
-            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Oe = Le && Le < 11,
+            Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         ((le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -56700,8 +56812,8 @@ if ('undefined' == typeof jQuery)
                     width: P,
                     height: I,
                     traverse: L,
-                    rTraverse: R,
-                    parseHTML: O,
+                    rTraverse: O,
+                    parseHTML: R,
                     hasStyling: F,
                     convertElement: N,
                     blockLevelList: ye,
@@ -57007,10 +57119,10 @@ if ('undefined' == typeof jQuery)
                 e = a;
             }
         }
-        function R(e, t, i, n) {
+        function O(e, t, i, n) {
             L(e, t, i, n, !0);
         }
-        function O(e, t) {
+        function R(e, t) {
             var i = (t = t || document).createDocumentFragment(),
                 n = r('div', {}, t);
             for (n.innerHTML = e; n.firstChild;) d(i, n.firstChild);
@@ -57218,7 +57330,7 @@ if ('undefined' == typeof jQuery)
                 Object.keys(t).forEach(function (e) {
                     n = n.replace(new RegExp(Q('{' + e + '}'), 'g'), t[e]);
                 }),
-                i && (n = O(n)),
+                i && (n = R(n)),
                 n
             );
         }
@@ -57327,7 +57439,7 @@ if ('undefined' == typeof jQuery)
                         u = s.createDocumentFragment();
                     if (
                         ('string' == typeof e ?
-                            (t && (e += l.selectedHtml() + t), (u = O(e)))
+                            (t && (e += l.selectedHtml() + t), (u = R(e)))
                         :   (d(u, e),
                             t &&
                                 (d(u, l.selectedRange().extractContents()),
@@ -57620,7 +57732,7 @@ if ('undefined' == typeof jQuery)
                                     u = i ? l.search(r[c]) : l.indexOf(c);
                                 if (u > -1) {
                                     var d = l.indexOf(c, u),
-                                        h = O(t[c], n),
+                                        h = R(t[c], n),
                                         p = l.substr(d + c.length);
                                     (h.appendChild(n.createTextNode(p)),
                                         (s.nodeValue = l.substr(0, d)),
@@ -57658,7 +57770,7 @@ if ('undefined' == typeof jQuery)
                 S,
                 B,
                 L,
-                O,
+                R,
                 W,
                 V,
                 U,
@@ -57861,7 +57973,7 @@ if ('undefined' == typeof jQuery)
                         p(S, 'beforedeactivate keyup mouseup', Ee),
                         p(S, 'keyup', nt),
                         p(S, 'focus', function () {
-                            O = null;
+                            R = null;
                         }),
                         p(o, 'selectionchanged', at),
                         p(o, 'selectionchanged', tt),
@@ -58055,7 +58167,7 @@ if ('undefined' == typeof jQuery)
                                 i.lastChild;
                             )
                                 ((i = i.lastChild),
-                                    !Re &&
+                                    !Oe &&
                                         k(i, 'br') &&
                                         i.previousSibling &&
                                         (i = i.previousSibling));
@@ -58156,7 +58268,7 @@ if ('undefined' == typeof jQuery)
                     if (Y) {
                         (Y.destroy(),
                             (Z = null),
-                            (O = null),
+                            (R = null),
                             (Y = null),
                             L && u(L),
                             m(Be, 'click', Xe));
@@ -58237,7 +58349,7 @@ if ('undefined' == typeof jQuery)
                             r = n.items;
                         e.preventDefault();
                         for (var l = 0; l < o.length; l++) {
-                            if (je.FileReader && r && Oe.test(r[l].type))
+                            if (je.FileReader && r && Re.test(r[l].type))
                                 return s(n.items[l].getAsFile());
                             a[o[l]] = n.getData(o[l]);
                         }
@@ -58441,7 +58553,7 @@ if ('undefined' == typeof jQuery)
                         e ?
                             _t.setWysiwygEditorValue(_t.getSourceEditorValue())
                         :   _t.setSourceEditorValue(_t.getWysiwygEditorValue()),
-                        (O = null),
+                        (R = null),
                         b(B),
                         b(f),
                         M(o, 'wysiwygMode', e),
@@ -58472,7 +58584,7 @@ if ('undefined' == typeof jQuery)
                             ));
                 }),
                 (Ee = function () {
-                    Le && (O = Z.selectedRange());
+                    Le && (R = Z.selectedRange());
                 }),
                 (_t.execCommand = function (e, t) {
                     var i = !1,
@@ -58575,9 +58687,9 @@ if ('undefined' == typeof jQuery)
                         (_t.closeDropDown(),
                         13 === e.which && !k(Q, 'li,ul,ol') && F(Q))
                     ) {
-                        O = null;
+                        R = null;
                         var t = r('br', {}, S);
-                        if ((Z.insertNode(t), !Re)) {
+                        if ((Z.insertNode(t), !Oe)) {
                             var i = t.parentNode,
                                 n = i.lastChild;
                             (n &&
@@ -58593,7 +58705,7 @@ if ('undefined' == typeof jQuery)
                     }
                 }),
                 (nt = function () {
-                    R(T, function (e) {
+                    O(T, function (e) {
                         if (
                             e.nodeType === ge &&
                             !/inline/.test(y(e, 'display')) &&
@@ -58603,7 +58715,7 @@ if ('undefined' == typeof jQuery)
                             var t = r('p', {}, S);
                             return (
                                 (t.className = 'sceditor-nlf'),
-                                (t.innerHTML = Re ? '' : '<br />'),
+                                (t.innerHTML = Oe ? '' : '<br />'),
                                 d(T, t),
                                 !1
                             );
@@ -58619,7 +58731,7 @@ if ('undefined' == typeof jQuery)
                     _t.val(e.value);
                 }),
                 (Ye = function () {
-                    (_t.closeDropDown(), (O = null));
+                    (_t.closeDropDown(), (R = null));
                 }),
                 (_t._ = function () {
                     var e,
@@ -58676,7 +58788,7 @@ if ('undefined' == typeof jQuery)
                         var n,
                             s = Z.selectedRange();
                         (ee || ot(),
-                            !Re &&
+                            !Oe &&
                                 s &&
                                 1 === s.endOffset &&
                                 s.collapsed &&
@@ -58688,7 +58800,7 @@ if ('undefined' == typeof jQuery)
                                 Z.selectRange(s)),
                             x.focus(),
                             T.focus(),
-                            O && (Z.selectRange(O), (O = null)));
+                            R && (Z.selectRange(R), (R = null)));
                     }
                     return (tt(), _t);
                 }),
@@ -58933,7 +59045,7 @@ if ('undefined' == typeof jQuery)
                             k(e, 'body') ||
                             (Z.saveRange(),
                             (e.className = ''),
-                            (O = null),
+                            (R = null),
                             _(e, 'style', ''),
                             k(e, 'p,div,td') || N(e, 'p'),
                             Z.restoreRange()),
@@ -59248,7 +59360,7 @@ if ('undefined' == typeof jQuery)
                                     (s += '</div>'));
                             }),
                             (a._htmlCache = s)),
-                            d(n, O(a._htmlCache)),
+                            d(n, R(a._htmlCache)),
                             p(n, 'click', 'a', function (t) {
                                 (i(w(this, 'color')),
                                     e.closeDropDown(!0),
@@ -59847,8 +59959,8 @@ if ('undefined' == typeof jQuery)
             je = window,
             Be = document,
             Le = xe,
-            Re = Le && Le < 11,
-            Oe = /^image\/(p?jpe?g|gif|png|bmp)$/i;
+            Oe = Le && Le < 11,
+            Re = /^image\/(p?jpe?g|gif|png|bmp)$/i;
         ((le.locale = {}),
             (le.formats = {}),
             (le.icons = {}),
@@ -59901,8 +60013,8 @@ if ('undefined' == typeof jQuery)
                     width: P,
                     height: I,
                     traverse: L,
-                    rTraverse: R,
-                    parseHTML: O,
+                    rTraverse: O,
+                    parseHTML: R,
                     hasStyling: F,
                     convertElement: N,
                     blockLevelList: ye,
@@ -66336,8 +66448,7 @@ const MAIN_BROADCAST_TYPE = 'MAIN',
     callbacks = new Map();
 class XYVirtualScroller {
     constructor(e, t, i = {}) {
-        if (
-            ((this.vlDebug = e.vlDebug || !1),
+        ((this.vlDebug = e.vlDebug || !1),
             (this.container = e),
             (this.content = e.querySelector('.virtual-content')),
             (this.renderItemFn = i.renderItem || null),
@@ -66355,7 +66466,8 @@ class XYVirtualScroller {
             (this.bufferPx = i.bufferPx || 400),
             (this.enableCache = i.enableCache || !1),
             (this.cacheKey = i.cacheKey || 'id'),
-            (this.cacheOptions = i.cacheOptions || virtualListCacheConfig),
+            (this.cacheOptions =
+                i.cacheOptions || getPlatformAdjustedVLCacheConfig()),
             (this.isItemDirtyFn = i.isItemDirtyFn || null),
             (this.markItemDirtyFn = i.markItemDirtyFn || null),
             (this.vlCache = null),
@@ -66364,23 +66476,19 @@ class XYVirtualScroller {
                     this.cacheOptions
                 )),
             (this.dirty = !1),
-            (this.viewportHeight = e.clientHeight || 350),
+            (this.heightsById = new Map()),
+            (this._heightsPending = !1),
+            (this._measureAttempts = 0),
+            (this._measureFrame = null),
+            (this._allowHeightRefill = !1),
+            (this._maxMeasureAttempts = 5));
+        const n = e.clientHeight;
+        (n > 0 ?
+            (this.viewportHeight = n)
+        :   ((this.viewportHeight = 350), (this._heightsPending = !0)),
             (this.count = t.length),
-            0 === this.count)
-        )
-            ((this.heights = []),
-                (this.prefixSums = [0]),
-                (this.totalHeight = 0));
-        else {
-            const e = i.initialItemHeight || 40;
-            ((this.heights = new Array(this.count).fill(e)),
-                (this.prefixSums = new Array(this.count + 1).fill(0)));
-            for (let e = 1; e <= this.count; e++)
-                this.prefixSums[e] =
-                    this.prefixSums[e - 1] + this.heights[e - 1];
-            this.totalHeight = this.prefixSums[this.count];
-        }
-        ((this.topSpacer = document.createElement('div')),
+            this._syncHeightsFromItems(),
+            (this.topSpacer = document.createElement('div')),
             (this.bottomSpacer = document.createElement('div')),
             (this.content.innerHTML = ''),
             this.content.appendChild(this.topSpacer),
@@ -66398,6 +66506,18 @@ class XYVirtualScroller {
                     }));
             }),
             this.attachEvents(),
+            e.addEventListener(
+                'touchend',
+                () => {
+                    ((this._measureAttempts = 0), this._scheduleMeasure());
+                },
+                { passive: !0 }
+            ),
+            'undefined' != typeof ResizeObserver &&
+                ((this._resizeObserver = new ResizeObserver(() => {
+                    this.updateViewport();
+                })),
+                this._resizeObserver.observe(e)),
             requestAnimationFrame(() => {
                 this.onScroll();
             }),
@@ -66454,17 +66574,18 @@ class XYVirtualScroller {
             this.onRowHoverLeave &&
             this.onRowHoverLeave(i, this.items[i], t, e);
     }
-    onScroll() {
-        const e = this.container.scrollTop,
-            t = e + this.viewportHeight,
-            i = Math.max(0, e - this.bufferPx),
-            n = t + this.bufferPx,
-            s = this.findIndexForOffset(i),
-            a = this.findIndexForOffset(n);
-        (!1 === this.dirty && s === this.startIndex && a === this.endIndex) ||
-            (this._discardDirty(),
-            (this.startIndex = s),
-            (this.endIndex = a),
+    onScroll(e = !1) {
+        const t = this.container.scrollTop,
+            i = t + this.viewportHeight,
+            n = Math.max(0, t - this.bufferPx),
+            s = i + this.bufferPx,
+            a = this.findIndexForOffset(n),
+            o = this.findIndexForOffset(s);
+        (!1 === this.dirty && a === this.startIndex && o === this.endIndex) ||
+            (e || (this._allowHeightRefill = !0),
+            this._discardDirty(),
+            (this.startIndex = a),
+            (this.endIndex = o),
             this.render());
     }
     findIndexForOffset(e) {
@@ -66564,67 +66685,123 @@ class XYVirtualScroller {
     }
     updateHeights() {
         let e = !1,
-            t = this.topSpacer.nextSibling;
-        for (; t && t !== this.bottomSpacer;) {
-            const i = Number(t.dataset.index),
-                n = t.getBoundingClientRect().height;
-            (n > 0 &&
-                n !== this.heights[i] &&
-                ((this.heights[i] = n), (e = !0)),
-                (t = t.nextSibling));
+            t = !(this.container.clientHeight > 0),
+            i = this.topSpacer.nextSibling;
+        for (; i && i !== this.bottomSpacer;) {
+            const n = Number(i.dataset.index),
+                s = Math.ceil(i.getBoundingClientRect().height);
+            (s > 0 && !Number.isNaN(n) ?
+                this._rememberMeasuredHeight(n, s) && (e = !0)
+            :   (t = !0),
+                (i = i.nextSibling));
         }
-        if (!e) return;
+        if (((this._heightsPending = t), e)) {
+            this.rebuildPrefixSums();
+            const e = this.prefixSums[this.startIndex] || 0,
+                t =
+                    this.totalHeight -
+                    (this.prefixSums[this.endIndex + 1] || 0);
+            ((this.topSpacer.style.height = `${e}px`),
+                (this.bottomSpacer.style.height = `${t}px`),
+                this._allowHeightRefill &&
+                    ((this._allowHeightRefill = !1),
+                    this._markAsDirty(),
+                    this.onScroll(!0)));
+        }
+        t ? this._scheduleMeasure() : (this._measureAttempts = 0);
+    }
+    _estimatedItemHeight() {
+        return (
+            this._initialItemHeightOverride ||
+            this.options?.initialItemHeight ||
+            40
+        );
+    }
+    _itemCacheKey(e) {
+        if (e) return e[this.cacheKey];
+    }
+    _heightForItem(e) {
+        const t = this._itemCacheKey(e);
+        return null != t && this.heightsById.has(t) ?
+                this.heightsById.get(t)
+            :   this._estimatedItemHeight();
+    }
+    _syncHeightsFromItems() {
+        if (0 === this.count)
+            return (
+                (this.heights = []),
+                (this.prefixSums = [0]),
+                void (this.totalHeight = 0)
+            );
+        this.heights = new Array(this.count);
+        for (let e = 0; e < this.count; e++)
+            this.heights[e] = this._heightForItem(this.items[e]);
         this.rebuildPrefixSums();
-        const i = this.prefixSums[this.startIndex],
-            n = this.totalHeight - this.prefixSums[this.endIndex + 1];
-        ((this.topSpacer.style.height = `${i}px`),
-            (this.bottomSpacer.style.height = `${n}px`));
+    }
+    _rememberMeasuredHeight(e, t) {
+        if (!(t > 0 && this.items[e])) return !1;
+        const i = this._itemCacheKey(this.items[e]);
+        return (
+            ((null != i && this.heightsById.has(i) ?
+                this.heightsById.get(i)
+            :   this.heights[e]) !== t ||
+                this.heights[e] !== t) &&
+            ((this.heights[e] = t), null != i && this.heightsById.set(i, t), !0)
+        );
+    }
+    _scheduleMeasure() {
+        this._measureFrame ||
+            this._measureAttempts >= this._maxMeasureAttempts ||
+            ((this._measureAttempts += 1),
+            (this._measureFrame = requestAnimationFrame(() => {
+                this._measureFrame = null;
+                const e = this.container.clientHeight;
+                e > 0 && e !== this.viewportHeight ?
+                    this.updateViewport()
+                :   this.updateHeights();
+            })));
     }
     setItems(e, t = {}) {
         if (!e) return;
         if (0 === this.count && 0 === e.length) return;
         this.itemsUpdateTimeout && clearTimeout(this.itemsUpdateTimeout);
         const i = t.preserveScroll ? this._captureAnchor() : null;
-        if (
-            ((this.items = e),
+        ((this.items = e),
             (this.count = e.length),
             this._markAsDirty(),
-            0 === this.count)
-        )
-            return void this._resetState();
-        const n = t.initialItemHeight || this.options?.initialItemHeight || 40,
-            s = this.heights || [];
-        this.heights = new Array(this.count);
-        for (let e = 0; e < this.count; e++) this.heights[e] = s[e] ?? n;
-        (this.rebuildPrefixSums(),
-            (this.startIndex = 0),
-            (this.endIndex = -1),
-            t.preserveScroll && i ?
-                requestAnimationFrame(() => {
-                    ((i.index = Math.min(i.index, this.count - 1)),
-                        this._restoreAnchor(i),
-                        this.onScroll());
-                })
-            :   ((this.container.scrollTop = 0), this.onScroll()));
+            0 !== this.count ?
+                ((this._initialItemHeightOverride =
+                    t.initialItemHeight || null),
+                this._syncHeightsFromItems(),
+                (this._initialItemHeightOverride = null),
+                (this.startIndex = 0),
+                (this.endIndex = -1),
+                t.preserveScroll && i ?
+                    requestAnimationFrame(() => {
+                        (this._restoreAnchor(i), this.onScroll());
+                    })
+                :   ((this.container.scrollTop = 0), this.onScroll()))
+            :   this._resetState());
     }
     addItem(e, t = this.items.length) {
-        this.items.splice(t, 0, e);
-        const i = this.options?.initialItemHeight || 40;
-        (this.heights.splice(t, 0, i),
+        (this.items.splice(t, 0, e),
+            (this.count = this.items.length),
+            this.heights.splice(t, 0, this._heightForItem(e)),
             this.rebuildPrefixSums(),
             t <= this.startIndex && this.startIndex++,
             t <= this.endIndex && this.endIndex++,
             this.onScroll());
     }
     addItems(e) {
-        this.items.push(...e);
-        const t = this.options?.initialItemHeight || 40;
-        (this.heights.push(...e.map(() => t)),
+        (this.items.push(...e),
+            (this.count = this.items.length),
+            this.heights.push(...e.map(e => this._heightForItem(e))),
             this.rebuildPrefixSums(),
             this.onScroll());
     }
     _resetState() {
-        ((this.prefixSums = [0]),
+        ((this.heights = []),
+            (this.prefixSums = [0]),
             (this.totalHeight = 0),
             (this.startIndex = 0),
             (this.endIndex = -1),
@@ -66636,15 +66813,9 @@ class XYVirtualScroller {
         if (e < 0 || e >= this.count) return;
         const t = this._captureAnchor();
         (this.items.splice(e, 1),
-            this.heights.splice(e, 1),
             (this.count = this.items.length),
             0 !== this.count ?
-                (e < t.index ?
-                    (t.index -= 1)
-                :   e === t.index &&
-                    ((t.index = Math.min(t.index, this.count - 1)),
-                    (t.offsetWithinItem = 0)),
-                this.rebuildPrefixSums(),
+                (this._syncHeightsFromItems(),
                 (this.startIndex = 0),
                 (this.endIndex = -1),
                 this._markAsDirty(),
@@ -66714,28 +66885,46 @@ class XYVirtualScroller {
         this.dirty = !1;
     }
     _captureAnchor() {
-        const e = this.container.scrollTop,
-            t = Math.min(
-                this.count > 0 ? this.findIndexForOffset(e) : 0,
-                Math.max(0, this.count - 1)
-            );
-        return { index: t, offsetWithinItem: e - (this.prefixSums[t] ?? 0) };
+        const e = this.container.scrollTop;
+        if (0 === this.count)
+            return { id: null, offsetWithinItem: 0, scrollTop: e };
+        const t = Math.min(this.findIndexForOffset(e), this.count - 1),
+            i = this.prefixSums[t] ?? 0,
+            n = this.items[t];
+        return {
+            id: this._itemCacheKey(n) ?? null,
+            offsetWithinItem: e - i,
+            scrollTop: e,
+        };
     }
     _restoreAnchor(e) {
         if (!e || 0 === this.count) return void (this.container.scrollTop = 0);
-        const t = Math.max(0, Math.min(e.index, this.count - 1)),
-            i = this.prefixSums[t] ?? 0,
-            n = Math.max(0, i + e.offsetWithinItem);
-        this.container.scrollTop = n;
+        let t = -1;
+        if (
+            (null != e.id &&
+                (t = this.items.findIndex(t => this._itemCacheKey(t) === e.id)),
+            -1 === t)
+        ) {
+            const t = Math.max(0, this.totalHeight);
+            return void (this.container.scrollTop = Math.min(
+                Math.max(0, e.scrollTop || 0),
+                t
+            ));
+        }
+        const i = this.prefixSums[t] ?? 0;
+        this.container.scrollTop = Math.max(0, i + e.offsetWithinItem);
     }
     updateViewport() {
-        const e = this._captureAnchor();
-        ((this.viewportHeight = this.container.clientHeight),
+        const e = this.container.clientHeight;
+        if (!(e > 0))
+            return ((this._heightsPending = !0), void this._scheduleMeasure());
+        if (e === this.viewportHeight)
+            return void (this._heightsPending && this._scheduleMeasure());
+        const t = this._captureAnchor();
+        ((this.viewportHeight = e),
             this._markAsDirty(),
             requestAnimationFrame(() => {
-                ((e.index = Math.min(e.index, this.count - 1)),
-                    this._restoreAnchor(e),
-                    this.onScroll());
+                (this._restoreAnchor(t), this.onScroll());
             }));
     }
     _storeRow(e, t) {
@@ -66747,7 +66936,7 @@ class XYVirtualScroller {
         if (!t) return null;
         if ('dom' === t.type) return t.value;
         const i = document.createElement('template');
-        return ((i.innerHTML = t.value), i.firstElementChild);
+        return ((i.innerHTML = t.value), i.content.firstElementChild);
     }
     _vl_Log(e) {
         this.vlDebug && console.log(e);

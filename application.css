@@ -10693,7 +10693,7 @@ body.bigMap #main_navbar {
     transform: rotate(-30deg);
     /* W3C */
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-    color: #ffffff;
+    color: #fff;
 }
 .buy_item_save {
     background-color: #5bb75b;
@@ -11215,11 +11215,11 @@ body.dark .panel-default {
     background-color: #505050;
 }
 body.dark .panel-heading {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #ddd;
 }
 body.dark .panel-footer {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #ddd;
 }
 body.dark .panel-body a,
@@ -11241,12 +11241,12 @@ body.dark .navbar-default {
     color: #fff;
 }
 body.dark .btn-default {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #fff;
     border: 1px solid #252525;
 }
 body.dark .btn-default:hover {
-    background-image: linear-gradient(to bottom, #000000 0, #505050 100%);
+    background-image: linear-gradient(to bottom, #000 0, #505050 100%);
     background-position: 0 0;
     color: #fff;
 }
@@ -12257,7 +12257,7 @@ body.bigMapDark .missions-panel-head,
 body.bigMapDark #buildings_outer .panel-heading,
 body.bigMapDark #chat_outer .panel-heading,
 body.bigMapDark #radio_outer .panel-heading {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: white;
 }
 body.bigMap #buildings_outer .panel,
@@ -12608,7 +12608,7 @@ button.ui-button::-moz-focus-inner {
 .ui-controlgroup-vertical .ui-spinner-input {
     /* Support: IE8 only, Android < 4.4 only */
     width: 75%;
-    width: calc(97.6%);
+    width: calc(100% - 2.4em);
 }
 .ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
     border-top-style: solid;
@@ -15621,7 +15621,7 @@ body.dark .arrow {
     border-radius: 5px;
     position: relative;
     left: 30px;
-    width: calc(80%);
+    width: calc(100% - 20px);
     top: 30px;
     align-self: center;
 }
@@ -15643,7 +15643,7 @@ body.dark .arrow {
     left: 30px;
     bottom: 30px;
     align-self: center;
-    width: calc(80%);
+    width: calc(100% - 20px);
 }
 #event_buff_shop .grid-container .grid-item .grid-item-footer .btn {
     width: 100%;
@@ -15671,7 +15671,7 @@ body.dark .arrow {
     text-align: right;
 }
 body.dark .grid-container .grid-item .grid-item-header {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     border: 1px solid #000;
 }
 body.dark .grid-container .grid-item .grid-item-text .line {
@@ -16211,7 +16211,7 @@ body.dark .dark-visible {
     border-color: #000;
 }
 .dark #manage_dispatch_centers_body .panel-header {
-    background-image: linear-gradient(to bottom, #505050 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #ddd;
     border-bottom: #000;
 }
@@ -16392,13 +16392,7 @@ body.dark .hospital-overview-desktop-row:nth-child(even) {
     min-height: 0;
 }
 .multiple-building-extensions-panel-body-desktop {
-    background: linear-gradient(
-        to right,
-        #505050,
-        #505050 50%,
-        #dddddd,
-        #dddddd 50%
-    );
+    background: linear-gradient(to right, #505050, #505050 50%, #ddd, #ddd 50%);
 }
 .multiple-building-extensions-selector {
     min-height: 0;
@@ -16654,12 +16648,12 @@ input.invalid {
     grid-row-end: span 1;
 }
 .limit-3-rows {
-    max-height: calc(6em);
+    max-height: calc(2 * 3em);
     overflow-y: auto;
     line-height: 2.4em;
 }
 .limit-5-rows {
-    max-height: calc(15em);
+    max-height: calc(5 * 3em);
     overflow-y: auto;
     line-height: 2.4em;
 }
@@ -16853,6 +16847,9 @@ body.dark .well.hospital-boost-active {
     color: #ddd !important;
 }
 /* Each item is block-level; height is dynamic */
+.virtual-item-indicator {
+    contain: layout paint style;
+}
 .virtual-item {
     box-sizing: border-box;
     width: 100%;
@@ -17040,13 +17037,7 @@ tr.hidden {
     max-width: 200px;
 }
 .vehicle-group-panel-body {
-    background: linear-gradient(
-        to right,
-        #505050,
-        #505050 50%,
-        #dddddd,
-        #dddddd 50%
-    );
+    background: linear-gradient(to right, #505050, #505050 50%, #ddd, #ddd 50%);
 }
 .vehicle-group-container {
     display: flex;
