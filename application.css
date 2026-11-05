@@ -15785,6 +15785,9 @@ body.dark .grid-container .grid-item .grid-item-text .line {
     align-items: center;
     gap: 8px;
 }
+.settings .push-notification-sub-setting {
+    margin-left: 24px;
+}
 .settings .settings-tab-body {
     margin-bottom: 70px;
 }
