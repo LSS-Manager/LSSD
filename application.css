@@ -16625,6 +16625,9 @@ span.speed-label {
 .fit-error-label {
     display: inline-block;
 }
+.refit-template-section {
+    margin-bottom: 15px;
+}
 .tick {
     transition: opacity 0.2s ease;
 }
