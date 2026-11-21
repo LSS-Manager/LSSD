@@ -15570,21 +15570,25 @@ function identifyDefaultOrderBasedOnTarge(e) {
                                 s
                             :   l[t];
                     if (
-                        !('string' === (a = typeof i) &&
-                            (s = Fe.exec(i)) &&
-                            s[1] &&
-                            ((i = h(e, t, s)), (a = 'number')),
-                        null == i ||
-                            i != i ||
-                            ('number' === a &&
-                                (i +=
-                                    (s && s[3]) ||
-                                    (pe.cssNumber[r] ? '' : 'px')),
-                            de.clearCloneStyle ||
-                                '' !== i ||
-                                0 !== t.indexOf('background') ||
-                                (l[t] = 'inherit'),
-                            o && 'set' in o && void 0 === (i = o.set(e, i, n))))
+                        !(
+                            'string' === (a = typeof i) &&
+                                (s = Fe.exec(i)) &&
+                                s[1] &&
+                                ((i = h(e, t, s)), (a = 'number')),
+                            null == i ||
+                                i != i ||
+                                ('number' === a &&
+                                    (i +=
+                                        (s && s[3]) ||
+                                        (pe.cssNumber[r] ? '' : 'px')),
+                                de.clearCloneStyle ||
+                                    '' !== i ||
+                                    0 !== t.indexOf('background') ||
+                                    (l[t] = 'inherit'),
+                                o &&
+                                    'set' in o &&
+                                    void 0 === (i = o.set(e, i, n)))
+                        )
                     )
                         try {
                             l[t] = i;
