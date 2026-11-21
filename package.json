@@ -6,7 +6,7 @@
         "prettier:write": "prettier --write --cache --cache-strategy content --ignore-path .prettierignore . "
     },
     "dependencies": {
-        "jsdom": "31.0.0",
+        "jsdom": "31.0.1",
         "prettier": "^3.9.10"
     }
 }
