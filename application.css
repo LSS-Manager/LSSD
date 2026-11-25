@@ -10570,8 +10570,11 @@ body.bigMap #main_navbar {
     padding: 5px;
     border-radius: 3px;
     margin-bottom: 5px;
+    justify-content: space-between;
 }
 .building_list_vehicle_element {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 2px;
 }
 .vehicle_building_list_button {
@@ -10580,9 +10583,7 @@ body.bigMap #main_navbar {
     padding: 0.2em 0.6em 0.3em;
     word-break: break-word;
     white-space: wrap;
-}
-.vehicle_caption {
-    word-break: break-word;
+    text-align: start;
 }
 .building_list_fms {
     display: inline;
@@ -10596,6 +10597,11 @@ body.bigMap #main_navbar {
     vertical-align: baseline;
     border-radius: 0.25em;
     margin-right: 5px;
+    height: fit-content;
+    width: fit-content;
+}
+.vehicle_overview .building_list_fms {
+    margin-top: 3px;
 }
 .building_list_caption .map_position_mover {
     margin-left: 5px;
@@ -11697,9 +11703,18 @@ body.dark .hospital-overview-sort-header.tablesorter-headerAsc {
 }
 .vehicle_overview .list-group-item {
     padding: 0 15px 3px 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+.vehicle_overview .group-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
 }
 .vehicle_overview .list-group-item img {
     max-height: 20px;
+    margin-top: 3px;
 }
 .vehicle_overview .search_input_field {
     margin-bottom: 20px;
@@ -14142,6 +14157,48 @@ a.ui-button:active,
     width: 100%;
     margin-bottom: 0;
     word-break: break-word;
+}
+.mission_building_label {
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    word-break: break-word;
+}
+.min-text-w {
+    min-width: 10ch;
+}
+.break-word-label {
+    text-align: start;
+    white-space: wrap;
+    word-break: break-word;
+    min-width: 10ch;
+}
+.short-name {
+    display: block;
+    /* needed for width */
+    white-space: nowrap;
+    /* single line */
+    overflow: hidden;
+    /* hide overflow */
+    text-overflow: ellipsis;
+    /* show "..." */
+    min-width: 10ch;
+}
+.sn-20 {
+    max-width: 20ch;
+    /* set the visible width */
+}
+.sn-30 {
+    max-width: 30ch;
+    /* set the visible width */
+}
+.sn-40 {
+    max-width: 40ch;
+    /* set the visible width */
+}
+.sn-100 {
+    max-width: 100%;
+    /* set the visible width, when limited by parent element */
 }
 .searchHelperInvisble,
 .mission_alliance_distance_hide,
@@ -17096,6 +17153,24 @@ tr.hidden {
 .dark .popover {
     background-color: #505050;
 }
+.btn-wrap {
+    height: fit-content;
+    width: fit-content;
+}
+.radio_message {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.tooltip-inner {
+    max-width: 300px;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+}
+.tooltip {
+    z-index: 10000;
+}
 /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
@@ -18572,9 +18647,10 @@ i.bbcode-link-icon {
 /* line 150, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 .building_list_caption {
     border: 1px solid rgba(142, 137, 137, 0.65);
+    justify-content: space-between;
 }
 
-/* line 154, app/assets/stylesheets/design-v2.scss */
+/* line 155, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 .search-station-input {
     padding-left: 24px;
     padding-top: 2px;
@@ -18585,7 +18661,7 @@ i.bbcode-link-icon {
     background-image: url('/images/buttons/magnifyingglass-dark.svg');
 }
 
-/* line 164, app/assets/stylesheets/design-v2.scss */
+/* line 165, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2
     #building_panel_heading
     .search-station-input {
@@ -18593,29 +18669,29 @@ i.bbcode-link-icon {
     border: 1px solid rgba(0, 0, 0, 0.65);
 }
 
-/* line 169, app/assets/stylesheets/design-v2.scss */
+/* line 170, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #btn-group-building-select {
     gap: 2px;
 }
 
-/* line 175, app/assets/stylesheets/design-v2.scss */
+/* line 176, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.65);
 }
 
-/* line 180, app/assets/stylesheets/design-v2.scss */
+/* line 181, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.collapsed {
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-/* line 185, app/assets/stylesheets/design-v2.scss */
+/* line 186, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle .icon-bar {
     background-color: black;
 }
 
-/* line 189, app/assets/stylesheets/design-v2.scss */
+/* line 190, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2
     .navbar-default
     #main-navbar-toggle[aria-expanded='true'] {
@@ -18623,7 +18699,7 @@ i.bbcode-link-icon {
     box-shadow: none;
 }
 
-/* line 194, app/assets/stylesheets/design-v2.scss */
+/* line 195, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.news_new,
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.alliance_forum_new,
 .design-v2.design-v2.design-v2.design-v2
@@ -18641,7 +18717,7 @@ i.bbcode-link-icon {
     background: linear-gradient(180deg, #71af63 0%, #629f55 100%);
 }
 
-/* line 207, app/assets/stylesheets/design-v2.scss */
+/* line 208, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 #main-navbar-toggle.news_new .icon-bar,
 .design-v2.design-v2.design-v2.design-v2
     #main-navbar-toggle.alliance_forum_new
@@ -18670,7 +18746,7 @@ i.bbcode-link-icon {
     background-color: white;
 }
 
-/* line 220, app/assets/stylesheets/design-v2.scss */
+/* line 221, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2 .navbar-header .money-block a {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.65);
@@ -18683,7 +18759,7 @@ i.bbcode-link-icon {
     padding: 3px 6px;
 }
 
-/* line 233, app/assets/stylesheets/design-v2.scss */
+/* line 234, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2
     .navbar-header
     .money-block
@@ -18693,7 +18769,7 @@ i.bbcode-link-icon {
     padding-bottom: 3px;
 }
 
-/* line 238, app/assets/stylesheets/design-v2.scss */
+/* line 239, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2
     .navbar-header
     .money-block
@@ -18703,7 +18779,7 @@ i.bbcode-link-icon {
     padding-bottom: 3px;
 }
 
-/* line 243, app/assets/stylesheets/design-v2.scss */
+/* line 244, app/assets/stylesheets/design-v2.scss */
 .design-v2.design-v2.design-v2.design-v2
     .navbar-header
     .money-block
@@ -18712,39 +18788,39 @@ i.bbcode-link-icon {
     padding-bottom: 3px;
 }
 
-/* line 250, app/assets/stylesheets/design-v2.scss */
+/* line 251, app/assets/stylesheets/design-v2.scss */
 #event_buff_shop .money-block div {
     height: 65%;
 }
 
-/* line 262, app/assets/stylesheets/design-v2.scss */
+/* line 263, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .navbar-header .money-block a {
     color: #fff;
     background: #505050;
 }
 
-/* line 270, app/assets/stylesheets/design-v2.scss */
+/* line 271, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .btn-default {
     background-image: linear-gradient(to bottom, #505050 0, #000 100%);
     color: #fff;
     border: 1px solid #252525;
 }
 
-/* line 276, app/assets/stylesheets/design-v2.scss */
+/* line 277, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .btn-default:hover {
     background-image: linear-gradient(to bottom, #000 0, #505050 100%);
     background-position: 0 0;
     color: #fff;
 }
 
-/* line 284, app/assets/stylesheets/design-v2.scss */
+/* line 285, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li > a {
     border-color: #000;
     background-color: #505050;
     color: #fff;
 }
 
-/* line 290, app/assets/stylesheets/design-v2.scss */
+/* line 291, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a,
 .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:focus,
 .dark.design-v2.design-v2.design-v2.design-v2 .nav-tabs > li.active > a:hover {
@@ -18753,14 +18829,14 @@ i.bbcode-link-icon {
     box-shadow: none;
 }
 
-/* line 296, app/assets/stylesheets/design-v2.scss */
+/* line 297, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .alert-warning {
     border: 1px solid rgba(220, 61, 50, 0.65);
     background-color: #ffe3e1;
     color: #9d4a46;
 }
 
-/* line 302, app/assets/stylesheets/design-v2.scss */
+/* line 303, app/assets/stylesheets/design-v2.scss */
 .dark.design-v2.design-v2.design-v2.design-v2 .alert-warning a:not(.btn) {
     color: #a94442;
     text-decoration: underline;
